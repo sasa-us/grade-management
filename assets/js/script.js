@@ -43,6 +43,7 @@ function initializeApp() {
 function addClickHandlersToElements() {
       $('#add').on("click", handleAddClicked);
       $('#cancel').on('click', handleCancelClick);
+      $('#getServerData').on('click',getDB)
 }
 
 /***************************************************************************************************
@@ -269,6 +270,7 @@ function removeStudent(index, studentID) {
  //
 function getDB() {
       //alert('hi');
+      // $("tbody").children().remove();
       var apiUrl = 'data.php';
       
       $.ajax({

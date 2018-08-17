@@ -1,0 +1,32 @@
+body{
+    background-color: ivory;
+}
+.student-list thead {
+    background: gainsboro;
+}
+
+navbar{
+    background-color: lavender;
+}
+
+tbody tr:nth-child(even) {
+    background-color: gainsboro;
+}
+div.getall{
+    margin-top: 15px;
+}
+
+button#cancel {
+    
+    margin-left: 10px;
+}
+
+table.table{
+    margin-top: 25px;
+    margin-left: 30px;
+}
+/* @media (min-width: 768px) {
+    table.student-list-container{
+        margin: 10px;
+    }
+} */
