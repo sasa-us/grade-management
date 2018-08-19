@@ -24,7 +24,7 @@ if(empty($result)) {
 		$output['success'] = true;
 		$insertID = mysqli_insert_id($conn);
 		$output['insertID'] = $insertID;
-		print('insert success');
+		// print('insert success');
 
 	} else {
 			$output['errors'][] = 'no data';
