@@ -53,7 +53,6 @@ function addClickHandlersToElements() {
        none
  */
 function handleAddClicked() {
-      alert('hi');
       addStudent();
 }
 /***************************************************************************************************
@@ -64,9 +63,7 @@ function handleAddClicked() {
  */
 function handleCancelClick() {
       console.log('cancel');
-      //clear form
       $('tr').val();
-      //clear input
       clearAddStudentFormInputs();
 }
 /***************************************************************************************************
@@ -83,29 +80,22 @@ function addStudent() {
       var grade = parseFloat(gradeStr);
       var stuID;
       if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='') {
-            // var inputObj = {
-            //       name: stuname,
-            //       course: course,
-            //       grade: grade
-            // };
+            var inputObj = {
+                  name: stuname,
+                  grade: grade,
+                  course_name: course,
+                  action: 'insert'
+            };
 
-            //var urlCreate = 'https://s-apis.learningfuze.com/sgt/create';
-            // ajax create send to server
             $.ajax({
-                  //url: urlCreate,
                   url: 'data.php',
                   method: 'GET',
                   dataType: "json",
-                  data: {
-                        //api_key: 'yQKdON9ERU',
-                        name: stuname,
-                        grade: grade,
-                        course_name: course,
-                        action: 'insert'
-                  },
+                  data: inputObj,
+            
                   success: function(response) {
+                        debugger;
                         console.log('response: ', response);
-                      
                        
                         if(response.success) {
                               stuID = response.new_id;  
@@ -142,9 +132,9 @@ function addStudent() {
  */
 function clearAddStudentFormInputs() {
       //why input.val(''); not work???
-      $('#studentName').val(" ");
-      $('#course').val(" ");
-      $('#studentGrade').val(" ");
+      $('#studentName').val("");
+      $('#course').val("");
+      $('#studentGrade').val("");
 }
 
 /***************************************************************************************************
@@ -171,12 +161,11 @@ function renderStudentOnDom(inputObj) {
       });
       var tdButton = $('<td>');
       var delButton = $('<button>', {
-            text: 'Delete',
+            // text: 'Delete',
             class: 'btn btn-danger',
             on: {
                   click: function(event) {
                         event.stopPropagation();
-                        console.log('before remove index now array ', student_array);
                         // console.log('this is ', $(this));// this is button clicked
                         // console.log('this.parent() is', $(this).parent());
                         var row = student_array.indexOf(inputObj);  //get the index of passed in object in array  
@@ -189,15 +178,58 @@ function renderStudentOnDom(inputObj) {
             }
       });
 
+     
+      var delspan = $('<span>');
+      var deli = $('<i>', {
+            class: 'fas fa-trash'
+      });
+      delspan.append(deli);
+      delButton.append(delspan);
       tdButton.append(delButton);
+
+
+      var tdEdit = $('<td>');
+      var editButton = $('<button>', {
+            class: 'btn btn-primary', 
+            "data-toggle":  "modal",
+            "data-target": "#myModalHorizontal",
+            on: {
+                  click: function(e) {
+                        e.stopPropagation();
+                        console.log('this is ', $(this));
+                        // showUpdateForm(); can not use outer function to get this. other wise it will be window
+                        // $(this).attr("data-toggle", "modal");
+                        // $(this).attr("data-target", "#myModalHorizontal");
+                        $('#myModalHorizontal').modal({show: true});
+                  }
+            }
+      });
+      var editspan = $('<span>');
+      var editi = $('<i>',  {
+            class: 'fas fa-pencil-alt'
+      });
+      editspan.append(editi);
+      editButton.append(editspan);
+      tdEdit.append(editButton);
 
       tr.append(tdName);
       tr.append(tdCourse);
       tr.append(tdGrade);
+      tr.append(tdEdit);
       tr.append(tdButton);
       $('.student-list tbody').append(tr);
 }
 
+
+
+function showUpdateForm() {
+      alert('update form here hi');
+      console.log('this is ', $(this));
+      $(this).attr("data-toggle", "modal");
+      $(this).attr("data-target", "#myModalHorizontal");
+}
+// class: 'fas fa-edit'
+// class: 'fas fa-pencil-alt'
 /***************************************************************************************************
  * updateStudentList - centralized function to update the average and call student list update
  * @param students {array} the array of student objects
@@ -246,13 +278,11 @@ function removeStudent(index, studentID) {
       student_array.splice(index, 1); //index in array will automatically update 
       console.log('after remove index now array ', student_array);
       console.log('remove function id is ', studentID);
-      //delete stu from DB
-      //var delURL = 'http://s-apis.learningfuze.com/sgt/delete';
+
       $.ajax({
             url: 'data.php',
             dataType: 'JSON',
             data: {
-                  // api_key: 'yQKdON9ERU',
                   id: studentID,
                   action: 'delete'
             },
@@ -265,22 +295,17 @@ function removeStudent(index, studentID) {
 
 }
 
-//***************************************************************************************************
- // $.ajax call 
- //
+//****************************************************************************************
 function getDB() {
-      //alert('hi');
-      // $("tbody").children().remove();
+      $("tbody").empty();
       var apiUrl = 'data.php';
       
       $.ajax({
             dataType: 'json',
             data: {
-                  //api_key: 'yQKdON9ERU'
                   action: 'readAll'
             },
             url: 'data.php',
-            //url: apiUrl,
             method: 'GET',
             success: function(studentRecord) {
                   //studentRecord.data = [{id: 1, name: xx, grade: 80, course: 'xx', }, {..}, {..}, {..}.....]
@@ -289,11 +314,8 @@ function getDB() {
                   console.log('server is running');
 
                   for(var i=0; i<studentRecord.data.length; i++) {
-                        renderStudentOnDom(studentRecord.data[i]);          
-                        //student_array.push(studentRecord.data[i]);
-                        
+                        renderStudentOnDom(studentRecord.data[i]);                                  
                   }
-                  console.log('push server to student arr', student_array);
             },
 
             error: function() {
