@@ -43,7 +43,8 @@ function initializeApp() {
 function addClickHandlersToElements() {
       $('#add').on("click", handleAddClicked);
       $('#cancel').on('click', handleCancelClick);
-      $('#getServerData').on('click',getDB)
+      $('#getServerData').on('click',getDB);
+      $('#saveChange').on('click', updateDBStudentInfor);
 }
 
 /***************************************************************************************************
@@ -159,7 +160,9 @@ function renderStudentOnDom(inputObj) {
       var tdGrade = $('<td>', {
             text: inputObj.grade
       });
-      var tdButton = $('<td>');
+      var tdButton = $('<td>', {
+            class: 'tdbutton td-Delbutton'
+      });
       var delButton = $('<button>', {
             // text: 'Delete',
             class: 'btn btn-danger',
@@ -188,7 +191,9 @@ function renderStudentOnDom(inputObj) {
       tdButton.append(delButton);
 
 
-      var tdEdit = $('<td>');
+      var tdEdit = $('<td>', {
+            class: 'tdbutton td-editbutton'
+      });
       var editButton = $('<button>', {
             class: 'btn btn-primary', 
             "data-toggle":  "modal",
@@ -197,10 +202,16 @@ function renderStudentOnDom(inputObj) {
                   click: function(e) {
                         e.stopPropagation();
                         console.log('this is ', $(this));
-                        // showUpdateForm(); can not use outer function to get this. other wise it will be window
-                        // $(this).attr("data-toggle", "modal");
-                        // $(this).attr("data-target", "#myModalHorizontal");
                         $('#myModalHorizontal').modal({show: true});
+
+                        //show stu info on form modal
+                        // console.log(inputObj);
+                        // console.log(inputObj.name);
+                        // console.log(inputObj.grade);
+                        // console.log(inputObj.course_name);
+                        $('#updateName').val(inputObj.name);
+                        $('#updateCourse').val(inputObj.course_name);
+                        $('#updateGrade').val(inputObj.grade);
                   }
             }
       });
@@ -220,14 +231,6 @@ function renderStudentOnDom(inputObj) {
       $('.student-list tbody').append(tr);
 }
 
-
-
-function showUpdateForm() {
-      alert('update form here hi');
-      console.log('this is ', $(this));
-      $(this).attr("data-toggle", "modal");
-      $(this).attr("data-target", "#myModalHorizontal");
-}
 // class: 'fas fa-edit'
 // class: 'fas fa-pencil-alt'
 /***************************************************************************************************
@@ -332,4 +335,6 @@ function getDB() {
    //change thd data to action: different action value
 //change function renderStudentOnDom(inputObj) {
    //inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
-   
+function updateDBStudentInfor() {
+      alert('hi');
+}

@@ -33,9 +33,18 @@ table.table{
     margin-left: 30px;
 }
 
+.tdbutton {
+    width: 80px;
+}
+.td-Delbutton:hover{
 
+}
 
-
+input#updateGrade,
+input#updateCourse,
+input#updateName{
+    color: gray;
+}
 /* ---------------------update form modal--------------------> */
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
