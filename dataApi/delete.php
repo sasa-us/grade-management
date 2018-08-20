@@ -1,6 +1,6 @@
 <?php
 require_once('mysql_connect.php');
-if(empty($_GET['name']) || empty($_GET['grade']) || empty($_GET['course_name'])) {
+if(empty($_POST['name']) || empty($_POST['grade']) || empty($_POST['course_name'])) {
 	$output['errors'][] = 'No enough data';
 }
 
@@ -8,7 +8,7 @@ if(empty($_GET['name']) || empty($_GET['grade']) || empty($_GET['course_name']))
 //if not, add an appropriate error to errors
 
 //write a query that deletes the student by the given student ID  
-$deleteID = $_GET['id'];
+$deleteID = $_POST['id'];
 $query = "DELETE FROM `student_data` WHERE `id`= $deleteID ";
 $result = null;
 //send the query to the database, store the result of the query into $result

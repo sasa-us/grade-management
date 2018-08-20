@@ -22,7 +22,7 @@ $(document).ready(initializeApp);
  */
 var student_array = [];
 var input = $("input[type=text]");
-
+var selectedStudentID = null;
 /***************************************************************************************************
  * initializeApp 
  * @params {undefined} none
@@ -80,7 +80,7 @@ function addStudent() {
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
       var stuID;
-      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='') {
+      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0)) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
@@ -90,7 +90,7 @@ function addStudent() {
 
             $.ajax({
                   url: 'data.php',
-                  method: 'GET',
+                  method: 'POST',
                   dataType: "json",
                   data: inputObj,
             
@@ -175,8 +175,18 @@ function renderStudentOnDom(inputObj) {
                         console.log('row of this obj is ',row);
                         console.log('deleted row is ', row);
                         console.log('del student id is ', stuID);
+
                         removeStudent(row, stuID);
-                        $(this).parent().parent().remove();
+                        $(this).parent().parent().fadeOut(500, function(){
+                              $(this).remove();
+                        });
+
+
+                        // $(this).parent().parent().addClass("strikeout");
+                        // delete confirm modal  
+                        //click confirm run below two 
+                        //removeStudent(row, stuID);
+                        // $(this).parent().parent().remove();
                   }
             }
       });
@@ -205,10 +215,12 @@ function renderStudentOnDom(inputObj) {
                         $('#myModalHorizontal').modal({show: true});
 
                         //show stu info on form modal
-                        // console.log(inputObj);
+                        console.log(inputObj);
                         // console.log(inputObj.name);
                         // console.log(inputObj.grade);
                         // console.log(inputObj.course_name);
+                        selectedStudentID = parseInt(inputObj.id);
+                        console.log(selectedStudentID);
                         $('#updateName').val(inputObj.name);
                         $('#updateCourse').val(inputObj.course_name);
                         $('#updateGrade').val(inputObj.grade);
@@ -289,7 +301,7 @@ function removeStudent(index, studentID) {
                   id: studentID,
                   action: 'delete'
             },
-            method: 'GET',
+            method: 'POST',
             success: function(response) {
                   console.log('response is ', response);
             }
@@ -309,7 +321,7 @@ function getDB() {
                   action: 'readAll'
             },
             url: 'data.php',
-            method: 'GET',
+            method: 'POST',
             success: function(studentRecord) {
                   //studentRecord.data = [{id: 1, name: xx, grade: 80, course: 'xx', }, {..}, {..}, {..}.....]
                   console.log('response is ', studentRecord);
@@ -337,4 +349,29 @@ function getDB() {
    //inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
 function updateDBStudentInfor() {
       alert('hi');
+      var studentObj = {
+            name: $("#updateName").val(),
+            course_name: $("#updateCourse").val(),
+            grade: parseInt($("#updateGrade").val()),
+      
+      }
+      var sendData = {
+            name: studentObj.name,
+            course_name: studentObj.course_name,
+            grade: studentObj.grade,
+            id: selectedStudentID,
+            action: "update" 
+      }
+      $.ajax({
+            data: sendData,
+            url: 'data.php',
+            method: "POST",
+            dataType: "json",
+
+            success: function(response) {
+                  console.log('response is ', response);
+            }
+      });
+
+      location.reload();
 }
