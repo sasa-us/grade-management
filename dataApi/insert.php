@@ -1,17 +1,17 @@
 <?php
 require_once('mysql_connect.php');
-if(empty($_GET['name']) || empty($_GET['grade']) || empty($_GET['course_name'])) {
+if(empty($_POST['name']) || empty($_POST['grade']) || empty($_POST['course_name'])) {
 	$output['errors'][] = 'No enough data';
 }
 
-print_r($_GET);
+print_r($_POST);
 //check if you have all the data you need from the client-side call.  
 //if not, add an appropriate error to errors
 
 //write a query that inserts the data into the database.  remember that ID doesn't need to be set as it is auto incrementing
-$name = $_GET['name'];
-$grade = $_GET['grade'];
-$courseName = $_GET['course_name'];
+$name = $_POST['name'];
+$grade = $_POST['grade'];
+$courseName = $_POST['course_name'];
 $query = "INSERT INTO `student_data`(`name`, `grade`, `course_name`) VALUES ('$name','$grade','$courseName')";
 $result = null;
 //send the query to the database, store the result of the query into $result

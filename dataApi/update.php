@@ -1,15 +1,43 @@
 <?php
 require_once('mysql_connect.php');
-print($_GET);
-if(empty($_GET['name']) || empty($_GET['grade']) || empty($_GET['course_name'])) {
-	$output['errors'][] = 'No enough data';
-}
+// print_r($_POST);
+// exit();
+    // [name] => aa
+    // [course_name] => aa
+    // [grade] => 11
+    // [id] => 22
+    // [action] => update
 
-//check if you have all the data you need from the client-side call.  This should include the fields being changed and the ID of the student to be changed
+if(empty($_POST['id'])){
+	$output['errors'][] = 'NO id given!';
+};
+if(empty($_POST['name'])){
+	$output['errors'][] = 'NO student name given!';
+};
+if(empty($_POST['course_name'])) {
+	$output['errors'][] = 'NO course name given!';
+};
+if(empty($_POST['grade'])) {
+	$output['errors'][] = 'NO grade given!';
+};
+
+$id = $_POST['id'];
+$name = filter_var($_POST['name']);
+$course_name = filter_var($_POST['course_name']);
+$grade = $_POST['grade'];
+
+//check if you have all the data you need from the client-side call.  
+//This should include the fields being changed and the ID of the student to be changed
 //if not, add an appropriate error to errors
 
 //write a query that updates the data at the given student ID.  
-$query = "UPDATE `student_data` SET `grade`= 100 WHERE `id`=16";
+
+
+$query = "UPDATE `student_data` 
+			 SET `name`= '$name', `grade`='$grade', `course_name`='$course_name'
+		   WHERE `id`= '$id'
+		";
+
 $result = null;
 //send the query to the database, store the result of the query into $result
 $result = mysqli_query($conn, $query);
@@ -18,13 +46,9 @@ $result = mysqli_query($conn, $query);
 if(empty($result)) {
 	$output['error'][] = 'database error';
 }else {
-	if(mysqli_affected_rows($conn) == 1) {
+	if(mysqli_affected_rows($conn) > 0) {
 		$output['success'] = true;
-
-	} else if(mysqli_affected_rows($conn) == 0) {
-		print('update with same value');
 	} 
-	
 	else {
 		$output['error'][] = 'update error';
 	}
