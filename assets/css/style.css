@@ -7,6 +7,31 @@ body{
     border-style: none;
     background: inherit;
 }
+
+ul.navbar-right {
+    width: 45%;
+}
+/* li#welcomeDisplay {
+    position: relative;
+    right: 40px;
+}
+#welcomeDisplay span{
+    position: relative;
+    left: 10px;
+} */
+
+ul.navbar-right li {
+    position: relative;
+    left: 46px;
+    top: 16px;
+    margin: 0 8px;
+}
+
+button#getServerData,
+button#add {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
 div.student-add-form {
     z-index: 11;
 }
