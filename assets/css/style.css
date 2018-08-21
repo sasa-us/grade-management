@@ -3,6 +3,10 @@ body{
 
     
 }
+.navbar button{
+    border-style: none;
+    background: inherit;
+}
 div.student-add-form {
     z-index: 11;
 }
@@ -65,6 +69,17 @@ tr.strikeout td:before {
     content: "\00B7";
     font-size: 1px;
   }
+
+
+
+/* -------------loginmodal----------------- */
+
+input#rememberme-0 {
+    margin-left: -12px;
+}
+
+
+
 
 
 

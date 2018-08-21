@@ -34,6 +34,8 @@ switch($_POST['action']){
 	case 'update':
 		include 'dataApi/update.php';
 		break;
+	case 'login':
+		include 'dataApi/user/login.php';
 }
 
 
