@@ -17,7 +17,7 @@
 
 <body>
     <div class="container">
-        <!-- nav bar -==========================================================-->
+        <!-- nav bar --->
         <div class="navbar navbar-default">
             <!-- only show this element when the isnt on mobile -->
             <div class="navbar-header">
@@ -36,88 +36,72 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="itemDisplay">
-                        <a href="#">
-                            <p>Welcome
-                                <span id='loginUserName'> </span>
-                            </p>
-                        </a>
+                    <li id="welcomeDisplay">
+                        <p>Welcome 
+                            <span id='loginUserName'> </span>
+                        </p>
                     </li>
-                    <li id="loginButton">
-                        <a>
-                            <button data-toggle="modal" data-target=".bs-modal-sm">login/Register</button>
-                        </a>
+                    <li id="loginSection">
+                        <button id="loginButton" data-toggle="modal" data-target=".bs-modal-sm">Login/Register</button>
                     </li>
-                    <li id="logoutButton">
-                        <a>Logout</a>
+                    <li id="logoutSection">
+                        <button id="logoutButton">Logout</button>
                     </li>
                 </ul>
             </div>
-            <!-- <h1 class="hidden-xs">Student Grade Table
-                <h4>Grade Average :
-                    <span class="avgGrade text-white-50 bg-dark">0</span>
-                </h4>
-            </h1> -->
-            <!-- only show this element when the user gets to a mobile version -->
-            <!-- <h3 class="hidden-sm hidden-md hidden-lg">Student Grade Table
-                <small>Grade Average :
-                    <span class="avgGrade">0</span>
-                </small>
-            </h3> -->
         </div>
-    </div>
-    <!-- nav bar end-==========================================================->
-        <!-form ============================================================== -->
+        <!-- nav bar end-=====->
 
-    <form class="row col-lg-3 col-sm-12 student-add-form pull-right">
-        <h4>Add Student</h4>
-        <div class="form-group input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-user "></span>
-            </span>
-            <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Student Name">
-        </div>
+        <!-form ======== -->
+        <form class="row col-lg-3 col-sm-12 student-add-form pull-right">
+            <h4>Add Student</h4>
+            <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user "></span>
+                </span>
+                <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Student Name">
+            </div>
 
-        <div class="form-group input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-list-alt"></span>
-            </span>
-            <input type="text" class="form-control" name="course" id="course" placeholder="Student Course">
-        </div>
+            <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                </span>
+                <input type="text" class="form-control" name="course" id="course" placeholder="Student Course">
+            </div>
 
-        <div class="form-group input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-education"></span>
-            </span>
-            <input type="text" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade">
-        </div>
+            <div class="form-group input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-education"></span>
+                </span>
+                <input type="text" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade">
+            </div>
 
-        <div>
-            <button type="button" id='add' class="btn btn-success" onclick="">Add</button>
-            <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Clear</button>
-            <br>
-        </div>
-        <div class="getall">
-            <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Check all students</button>
-            <!-- <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="getDB()">Get all student grade from Server</button> -->
-        </div>
+            <div>
+                <button type="button" id='add' class="btn btn-success" onclick="">Add</button>
+                <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Clear</button>
+                <br>
+            </div>
+            <div class="getall">
+                <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
+                <!-- <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="getDB()">Get all student grade from Server</button> -->
+            </div>
 
-    </form>
-    <!---form end ==============================================================-->
+        </form>
+        <!---form end ==-->
 
-    <!-- table below -->
-    <div class=" row col-lg-9 col-sm-12 student-list-container">
-        <table class="table student-list">
-            <thead>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Student Course</th>
-                    <th>Student Grade</th>
-                    <th>Operations</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <tr>
+        <!-- table below -->
+        <div class=" row col-lg-9 col-sm-12 student-list-container">
+            <table class="table student-list">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Student Course</th>
+                        <th>Student Grade</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
                         <td>Eric.Johnson</td>
                         <td>Math </td>
                         <td>80</td>
@@ -140,14 +124,15 @@
                             </button>
                         <td>
                     </tr> -->
-            </tbody>
-        </table>
-    </div>
-    <!-- table end =============================================================-->
+                </tbody>
+            </table>
+        </div>
+        <!-- table end ==============-->
     </div>
 
-    <!-- update form MODAL -->
-    <!-- Modal -->
+    <!----------------------------- ----------- Modals --------------------------------------- -------------->
+    <!------------------------------- update-form MODAL -------------------------------------------->
+
     <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -160,7 +145,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form class="form-horizontal" data-toggle="validator" role="form">
+                    <div class="form-horizontal" data-toggle="validator" role="form">
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="studentName">Name</label>
@@ -194,7 +179,7 @@
                             </div>
                         </div>
 
-                    </form>
+                    </div>
 
                 </div>
 
@@ -212,10 +197,9 @@
         </div>
     </div>
 
-    <!-- update modal end  -->
+    <!--end update-form modal -->
 
-    <!-- login modal -->
-
+    <!---------------------------------------------- login/signup modal ------------------------------------------>
     <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -243,25 +227,24 @@
                             <a mailto:href="sharryluh@gmail.com">sharryluh@gmail.com</a> for any other inquiries.</p>
                         </div>
 
-
                         <div class="tab-pane fade active in" id="signin">
                             <form class="form-horizontal">
                                 <fieldset>
                                     <!-- Sign In Form -->
                                     <!-- Text input-->
                                     <div class="control-group">
-                                        <label class="control-label" for="loginEmail">Email:</label>
+                                        <label class="control-label" for="email">Email:</label>
                                         <div class="controls">
-                                            <input required="" id="loginEmail" name="loginEmail" type="text" class="form-control" placeholder="example@lfz.edu" class="input-medium"
+                                            <input required="" id="email" name="email" type="text" class="form-control" placeholder="example@lfz.edu" class="input-medium"
                                                 required="">
                                         </div>
                                     </div>
 
                                     <!-- Password input-->
                                     <div class="control-group">
-                                        <label class="control-label" for="loginPassword">Password:</label>
+                                        <label class="control-label" for="password">Password:</label>
                                         <div class="controls">
-                                            <input required="" id="loginPassword" name="loginPassword" class="form-control" type="password" placeholder="********" class="input-medium">
+                                            <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
                                         </div>
                                     </div>
 
@@ -279,22 +262,24 @@
                                     <div class="control-group">
                                         <label class="control-label" for="loginFormButton"></label>
                                         <div class="controls">
-                                            <button id="loginFormButton" name="loginFormButton" class="btn btn-success">Login</button>
+                                            <button type="button" id="loginFormButton" name="loginFormButton" class="btn btn-success">Login</button>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
-            <!-- signup -->
+
+                        <!----------------------------------------- signup -------------------------------------------->
                         <div class="tab-pane fade" id="signup">
                             <form class="form-horizontal">
                                 <fieldset>
                                     <!-- Sign Up Form -->
                                     <!-- Text input-->
                                     <div class="control-group">
-                                        <label class="control-label" for="email">Email:</label>
+                                        <label class="control-label" for="registeremail">Email:</label>
                                         <div class="controls">
-                                            <input id="email" name="email" class="form-control" type="text" placeholder="example@lfz.edu" class="input-large" required="">
+                                            <input id="registeremail" name="registeremail" class="form-control" type="text" placeholder="example@lfz.edu" class="input-large"
+                                                required="">
                                         </div>
                                     </div>
 
@@ -308,9 +293,10 @@
 
                                     <!-- Password input-->
                                     <div class="control-group">
-                                        <label class="control-label" for="password">Password:</label>
+                                        <label class="control-label" for="registerpassword">Password:</label>
                                         <div class="controls">
-                                            <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
+                                            <input id="registerpassword" name="registerpassword" class="form-control" type="password" placeholder="********" class="input-large"
+                                                required="">
                                             <em>1-8 Characters</em>
                                         </div>
                                     </div>
@@ -329,7 +315,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="confirmsignup"></label>
                                         <div class="controls">
-                                            <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+                                            <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up
+                                            </button>
                                         </div>
                                     </div>
                                 </fieldset>

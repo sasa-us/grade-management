@@ -34,14 +34,18 @@ switch($_POST['action']){
 	case 'update':
 		include 'dataApi/update.php';
 		break;
+
+
 	case 'login':
 		include 'dataApi/user/login.php';
+		break;
+	case 'logout':
+		include 'dataApi/user/logout.php';
+		break;
 }
-
 
 //convert the $output variable to json, store the result in $outputJSON
 $output_json = json_encode($output);
-//print $outputJSON
 print($output_json);
-//end
+
 ?>

@@ -144,7 +144,6 @@ function clearAddStudentFormInputs() {
  * @param {object} studentObj a single student object with course, name, and grade inside
  */
 function renderStudentOnDom(inputObj) {
-      console.log('inside dom response', inputObj);
       //console.log('inside render dom obj.id is', inputObj.id);
       var stuID = inputObj.id;
       var tr = $('<tr>');
@@ -314,7 +313,7 @@ function removeStudent(index, studentID) {
 function getDB() {
       $("tbody").empty();
       var apiUrl = 'data.php';
-      
+      //if(rights == 'admin')
       $.ajax({
             dataType: 'json',
             data: {
@@ -339,6 +338,10 @@ function getDB() {
                },
             
       });
+
+      //else if(rights == 'student')
+      //action: 'readmy'
+      //email: 
 }
  
 //connect script.js to data.php
