@@ -23,6 +23,7 @@ $(document).ready(initializeApp);
 var student_array = [];
 var input = $("input[type=text]");
 var selectedStudentID = null;
+
 /***************************************************************************************************
  * initializeApp 
  * @params {undefined} none
@@ -312,34 +313,60 @@ function removeStudent(index, studentID) {
 //****************************************************************************************
 function getDB() {
       $("tbody").empty();
+
+      console.log('in getdb user is ', user_role);
+      console.log('in getDB email is ', myemail);
       var apiUrl = 'data.php';
-      //if(rights == 'admin')
-      $.ajax({
-            dataType: 'json',
-            data: {
-                  action: 'readAll'
-            },
-            url: 'data.php',
-            method: 'POST',
-            success: function(studentRecord) {
-                  //studentRecord.data = [{id: 1, name: xx, grade: 80, course: 'xx', }, {..}, {..}, {..}.....]
-                  console.log('response is ', studentRecord);
-                  console.log( 'data is ',studentRecord.data);
-                  console.log('server is running');
+      if(user_role == 'admin') {
+            //console.log('admin in getdb');
+            $.ajax({
+                  dataType: 'json',
+                  data: {
+                        action: 'readAll'
+                  },
+                  url: 'data.php',
+                  method: 'POST',
+                  success: function(studentRecord) {
+                        //studentRecord.data = [{id: 1, name: xx, grade: 80, course: 'xx', }, {..}, {..}, {..}.....]
+                        // console.log('response is ', studentRecord);
+                        // console.log( 'data is ',studentRecord.data);
+                        // console.log('server is running');
+      
+                        for(var i=0; i<studentRecord.data.length; i++) {
+                              renderStudentOnDom(studentRecord.data[i]);                                  
+                        }
+                  },
+      
+                  error: function() {
+                        $('tbody').html('<p>An error has occurred</p>');
+                        console.log('error');
+                     },       
+            });
+      }
+      else if(user_role == 'student') {
+            console.log('getdb script.js email is ', myemail);
+            var getdata = {
+                  email: myemail,
+                  action: 'readMydata'
+            };
 
-                  for(var i=0; i<studentRecord.data.length; i++) {
-                        renderStudentOnDom(studentRecord.data[i]);                                  
-                  }
-            },
-
-            error: function() {
-                  $('tbody').html('<p>An error has occurred</p>');
-                  console.log('error');
-               },
-            
-      });
-
-      //else if(rights == 'student')
+            $.ajax({
+                  data: getdata,
+                  url: 'data.php',
+                  method: 'post',
+                  dataType: 'json',
+                  success: function(response) {
+                        console.log(response);
+                        for(var i=0; i<response.data.length; i++) {
+                              renderStudentOnDom(response.data[i]);
+                        }
+                  },
+                  error: function() {
+                        $('tbody').html('<p>An error has occurred</p>');
+                        console.log('error');
+                  }      
+            });
+      }
       //action: 'readmy'
       //email: 
 }
