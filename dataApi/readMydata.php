@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $query);
 
 //check if $result is empty.
 if(empty($result)) {
-	$output['error'][] = mysqli_error($conn);
+	$output['errors'][] = mysqli_error($conn);
 } else {
 	if(mysqli_num_rows($result)>0) {
 		$output['success'] = true;
@@ -25,7 +25,7 @@ if(empty($result)) {
 		}//end while
 		
 	} else {
-		$output['error'][] = 'no data available';
+		$output['errors'][] = 'no data available';
     }
 }
 ?>

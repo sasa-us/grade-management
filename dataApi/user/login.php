@@ -28,10 +28,10 @@ if($result) {
         // [userID] => 1
         // [valid] => 1
     } else {
-        $output['error'] = 'invalide username or password';
+        $output['errors'] = 'invalide username or password';
     }
 } else {
-    $output['error'] = 'you are not regeistered';
+    $output['errors'] = 'you are not regeistered';
 }
     
 // output:

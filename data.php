@@ -9,7 +9,9 @@ if(empty($_POST['action'])){
 }
 //require the mysql_connect.php file.  Make sure your properly configured it!
 require_once('mysql_connect.php');
-
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
 $output = [
 	'success'=> false, //we assume we will fail
@@ -44,6 +46,9 @@ switch($_POST['action']){
 		break;
 	case 'logout':
 		include 'dataApi/user/logout.php';
+		break;
+	case 'register':
+		include 'dataApi/user/register.php';
 		break;
 }
 
