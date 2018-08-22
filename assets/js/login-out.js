@@ -13,6 +13,8 @@ function init() {
 // }
 var user_role = null;
 var myemail = null;
+var myname = null;
+var myid = null;
 
 function loginUser() {
     var email = $('#email').val();
@@ -35,9 +37,14 @@ function loginUser() {
                 $('#myModal').modal('hide');
                 user_role = response.user['user_role'];
                 myemail = response.user['email'];
+                myid = response.user['id'];
+                myname = response.user['name'];
+               
                 console.log(response.user);
                 console.log('db email ', myemail);
                 console.log('user role is ', user_role);
+                console.log(myid);
+                console.log(myname);
                 showWelcome(response.user);
             }
             else {

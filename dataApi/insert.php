@@ -12,7 +12,9 @@ print_r($_POST);
 $name = $_POST['name'];
 $grade = $_POST['grade'];
 $courseName = $_POST['course_name'];
-$query = "INSERT INTO `student_data`(`name`, `grade`, `course_name`) VALUES ('$name','$grade','$courseName')";
+$student_id = $_POST['student_id'];
+
+$query = "INSERT INTO `student_data`(`name`, `grade`, `course_name`, `student_id`) VALUES ('$name','$grade','$courseName', '$student_id')";
 $result = null;
 //send the query to the database, store the result of the query into $result
 $result = mysqli_query($conn, $query);

@@ -80,12 +80,13 @@ function addStudent() {
       var course = $('#course').val();
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
-      var stuID;
+      var stuID = myid;
       if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0)) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
                   course_name: course,
+                  student_id: myid,
                   action: 'insert'
             };
 
@@ -357,10 +358,15 @@ function getDB() {
                   method: 'post',
                   dataType: 'json',
                   success: function(response) {
-                        console.log(response);
-                        for(var i=0; i<response.data.length; i++) {
-                              renderStudentOnDom(response.data[i]);
+                        if(response.success) {
+                             console.log(response);
+                              for(var i=0; i<response.data.length; i++) {
+                                    renderStudentOnDom(response.data[i]);
+                              } 
+                        } else {
+                              alert('db is empty, please add new one');
                         }
+                        
                   },
                   error: function() {
                         $('tbody').html('<p>An error has occurred</p>');
