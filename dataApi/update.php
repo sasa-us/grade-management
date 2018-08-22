@@ -44,13 +44,13 @@ $result = mysqli_query($conn, $query);
 
 //check if $result is empty.  
 if(empty($result)) {
-	$output['error'][] = 'database error';
+	$output['errors'][] = 'database error';
 }else {
 	if(mysqli_affected_rows($conn) > 0) {
 		$output['success'] = true;
 	} 
 	else {
-		$output['error'][] = 'update error';
+		$output['errors'][] = 'update error';
 	}
 }
 	//if it is, add 'database error' to errors

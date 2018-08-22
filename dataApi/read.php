@@ -23,7 +23,7 @@ if(empty($result)) {
 		}//end while
 		
 	} else {
-		$output['error'][] = 'no data available';
+		$output['errors'][] = 'no data available';
 	}
 }
 

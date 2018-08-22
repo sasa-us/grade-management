@@ -3,6 +3,7 @@ function init() {
     // addClickHandlersToElements();
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
+    $('#confirmregist').on('click', registUser);
 
 }
 // function addClickHandlersToElements() {
@@ -60,6 +61,16 @@ function activeRegister() {
     $('div#signin').removeClass('active in');
     
 }
+
+function activelogin() {
+    alert('login again please');
+    $('#myTab li:nth-child(2)').removeClass('active');
+    $('#myTab li:nth-child(1)').addClass('active');
+    
+    $('div#signin').addClass('active in');
+    $('div#signup').removeClass('active in');
+    
+}
 function showWelcome(userInfo) {
     // console.log("show welcome userinfo", userInfo);
     //{id: "1", email: "aa", name: "aa", password: "aa", rights: "0", …}
@@ -95,4 +106,46 @@ function logoutUser() {
         }
     
     });
+}//end logoutUser()
+
+function registUser() {
+ 
+    var registemail = $('#registemail').val();
+    var registname = $('#registname').val();
+    var registpassword = $('#registpassword').val();
+    var reenterpassword = $('#reenterpassword').val();
+
+    // checkAvailableEmail();
+    if(registpassword === reenterpassword) {
+        var registData = {
+            email: registemail,
+            name: registname,
+            password: registpassword,
+            action: 'register'
+        }
+
+        $.ajax({
+            url: 'data.php',
+            data: registData,
+            method: 'post',
+            dataType: 'json',
+            success: function(response) {
+                console.log('register response',response);
+                if(response.success) {
+                    //modal register success, please login /
+                    //let user login again
+                    activelogin(); 
+                }
+
+            },
+            error: function(response) {
+                console.log('server not work');
+            }
+        });
+    } else {
+        alert('check psw');
+    }
+ 
+    
+
 }

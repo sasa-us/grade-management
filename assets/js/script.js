@@ -115,6 +115,7 @@ function addStudent() {
             };
 
             student_array.push(inputObj);
+            // student_array.unshift(inputObj);
             console.log('array now is ', student_array);
             //clear input
             clearAddStudentFormInputs();
@@ -367,8 +368,7 @@ function getDB() {
                   }      
             });
       }
-      //action: 'readmy'
-      //email: 
+     
 }
  
 //connect script.js to data.php
@@ -403,5 +403,5 @@ function updateDBStudentInfor() {
             }
       });
 
-      location.reload();
+      // location.reload();
 }
