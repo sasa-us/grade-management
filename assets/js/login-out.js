@@ -10,6 +10,9 @@ function init() {
 //     $("#loginButton").on('click', loginUser);
 //     $("#logoutButton").on('click', logoutUser);
 // }
+var user_role = null;
+var myemail = null;
+
 function loginUser() {
     var email = $('#email').val();
     var password = $('#password').val();
@@ -26,9 +29,14 @@ function loginUser() {
         method: 'post',
         success: function(response) {
            
-            //success: true, errors: Array(0), user: {…query selected column namne}
+            //success: true, errors: Array(0), user: {…. query selected column name from students table}
             if(response.success) {
                 $('#myModal').modal('hide');
+                user_role = response.user['user_role'];
+                myemail = response.user['email'];
+                console.log(response.user);
+                console.log('db email ', myemail);
+                console.log('user role is ', user_role);
                 showWelcome(response.user);
             }
             else {
@@ -78,6 +86,7 @@ function logoutUser() {
         success: function(response) {
             console.log( 'Logout response is ', response);
             if(response.success) {
+                
                 showWelcome(response.user);
             }
         },
