@@ -46,6 +46,7 @@ function loginUser() {
                 console.log(myid);
                 console.log(myname);
                 showWelcome(response.user);
+                getDB();
             }
             else {
                 activeRegister();
@@ -106,6 +107,7 @@ function logoutUser() {
             if(response.success) {
                 
                 showWelcome(response.user);
+                // window.localStorage.clear();
             }
         },
         error: function(response) {
