@@ -81,7 +81,7 @@ function addStudent() {
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
       var stuID = myid;
-      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0)) {
+      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0) && stuname == myname) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
