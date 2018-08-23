@@ -17,8 +17,14 @@ var myname = null;
 var myid = null;
 
 function loginUser() {
-    var email = $('#email').val();
+    if (localStorage) {
+        var email = $('#email').val();
+        localStorage.setItem('email', email);
+    }
+    // var email = $('#email').val();
+    var email = localStorage.getItem('email');
     var password = $('#password').val();
+
 
     logindata = {
         email: email,
@@ -37,6 +43,7 @@ function loginUser() {
                 $('#myModal').modal('hide');
                 user_role = response.user['user_role'];
                 myemail = response.user['email'];
+                
                 myid = response.user['id'];
                 myname = response.user['name'];
                
@@ -107,6 +114,7 @@ function logoutUser() {
             if(response.success) {
                 
                 showWelcome(response.user);
+                $("tbody").empty();
                 // window.localStorage.clear();
             }
         },

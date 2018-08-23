@@ -1,6 +1,7 @@
 <?
-session_start();
-require_once('mysql_connect.php');
+// session_start();
+require('sessions.inc.php');
+
 if(mysqli_connect_errno()) {
     echo 'fail to coonect MYSQL: '.mysqli_connect_error();
 }
@@ -21,12 +22,18 @@ if($result) {
 //$userData = the column name from select above
         $output['user'] = $userData;
         $output['success'] = true;
-        
-        $_SESSION['userID'] = $userData['id'];
-        $_SESSION['valid'] = true;            
-        // print_r($_SESSION);
-        // [userID] => 1
-        // [valid] => 1
+
+        if(empty($_SESSION)) {
+            $_SESSION['user'] = $userData;
+            $_SESSION['userID'] = $userData['id'];
+            $_SESSION['valid'] = true; 
+            // echo "session insert? ";
+        } 
+        //   else {
+        //     echo "<p>Session data exists:<pre>".print_r($_SESSION,1)."</pre></p>";
+        // }
+
+    
     } else {
         $output['errors'] = 'invalide username or password';
     }
@@ -43,5 +50,5 @@ if($result) {
 //         "password":"aa",
 //         "rights":"0",
 //         "token":""}
-
+session_write_close(); 
 ?>
