@@ -104,9 +104,21 @@ input#rememberme-0 {
 }
 
 
-
-
-
+/* ---delete modal--- */
+ #del-iconbox{
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: indianred;
+ }
+#del-modalhead h4{
+    text-align: center;
+    color:  indianred;
+}
+button#del-modalcancel {
+    left: 0px; 
+    bottom: 0x;
+}
 
 /* ---------------------update form modal--------------------> */
 .modal-body .form-horizontal .col-sm-2,
@@ -137,7 +149,7 @@ input#rememberme-0 {
         background-color: lightblue;
     }
 
-    .btn-info{
+    #getServerData{
         position: relative;
         left: 154px;
         bottom: 48px;
@@ -146,6 +158,11 @@ input#rememberme-0 {
     table.table {
         margin-top: 0px;
         margin-left: 0px;
+    }
+
+   #del-modalcancel {
+        left: 0px; 
+        bottom: 0x;
     }
 
 }

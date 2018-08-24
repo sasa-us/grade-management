@@ -23,6 +23,7 @@ $(document).ready(initializeApp);
 var student_array = [];
 var input = $("input[type=text]");
 var selectedStudentID = null;
+var confirmDelete = false;
 
 /***************************************************************************************************
  * initializeApp 
@@ -46,7 +47,10 @@ function addClickHandlersToElements() {
       $('#cancel').on('click', handleCancelClick);
       $('#getServerData').on('click',getDB);
       $('#saveChange').on('click', updateDBStudentInfor);
+     
+     
 }
+
 
 /***************************************************************************************************
  * handleAddClicked - Event Handler when user clicks the add button
@@ -167,7 +171,9 @@ function renderStudentOnDom(inputObj) {
       });
       var delButton = $('<button>', {
             // text: 'Delete',
-            class: 'btn btn-danger',
+            class: 'btn btn-danger trigger-btn',
+            
+            "data-toggle": "modal",
             on: {
                   click: function(event) {
                         event.stopPropagation();
@@ -177,18 +183,22 @@ function renderStudentOnDom(inputObj) {
                         console.log('row of this obj is ',row);
                         console.log('deleted row is ', row);
                         console.log('del student id is ', stuID);
+//--------------------------------------original directly remove-------------
+                        // removeStudent(row, stuID);
+                        // $(this).parent().parent().fadeOut(500, function(){
+                        //       $(this).remove();
+                        // });
+//--------------------------------------------------------------------------
 
-                        removeStudent(row, stuID);
-                        $(this).parent().parent().fadeOut(500, function(){
-                              $(this).remove();
-                        });
-
-
-                        // $(this).parent().parent().addClass("strikeout");
-                        // delete confirm modal  
+                        $(this).parent().parent().addClass("strikeout");
+                        handleDelete(row, stuID);
+                        // show delete confirm modal  
+                        
                         //click confirm run below two 
-                        //removeStudent(row, stuID);
-                        // $(this).parent().parent().remove();
+                        // removeStudent(row, stuID);
+                        // $(this).parent().parent().fadeOut(500, function(){
+                        //       $(this).remove();
+                        // });
                   }
             }
       });
@@ -384,7 +394,6 @@ function getDB() {
 //change function renderStudentOnDom(inputObj) {
    //inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
 function updateDBStudentInfor() {
-      alert('hi');
       var studentObj = {
             name: $("#updateName").val(),
             course_name: $("#updateCourse").val(),
@@ -411,3 +420,20 @@ function updateDBStudentInfor() {
 
       // location.reload();
 }
+function handleDelete(row, stuID){
+      showDeleteModal();
+      $('#del-modalconfirm').on('click', function() {
+            $('#deleteModal').modal('toggle'); 
+            console.log($(this));
+            removeStudent(row, stuID);
+
+            $('tr.strikeout').fadeOut(500, function(){
+                  $(this).remove();
+            }); 
+      } ); 
+      
+}
+function showDeleteModal() {
+      $('#deleteModal').modal('show');
+}
+
