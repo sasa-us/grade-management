@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('mysql_connect.php');
 if(empty($_POST['name']) || empty($_POST['grade']) || empty($_POST['course_name'])) {
 	$output['errors'][] = 'No enough data';

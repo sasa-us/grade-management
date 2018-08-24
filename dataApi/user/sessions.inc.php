@@ -1,5 +1,4 @@
 <?php
-
 $sdbc = null;  
 
 //start session
