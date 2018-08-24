@@ -1,4 +1,5 @@
 <?php
+session_start();
 // if(!isset(fromData)) {
 // 	//it returns true only when the variable is not null.
 // 	die('Unable to connect');

@@ -1,6 +1,7 @@
 <?
-// session_start();
-require('sessions.inc.php');
+session_start();
+//require('sessions.inc.php'); for store session id to db
+
 
 if(mysqli_connect_errno()) {
     echo 'fail to coonect MYSQL: '.mysqli_connect_error();
@@ -23,14 +24,24 @@ if($result) {
         $output['user'] = $userData;
         $output['success'] = true;
 
-        if(empty($_SESSION)) {
-            $_SESSION['user'] = $userData;
-            $_SESSION['userID'] = $userData['id'];
-            $_SESSION['valid'] = true; 
-            // echo "session insert? ";
-        } 
-        //   else {
+        //if(empty($_SESSION)) {
+            $_SESSION['userdata'] = $userData;
+            // $_SESSION['userdata'] = ['id'=>$userData['id'], 
+            //                         'name'=>$userData['name'], 
+            //                         'email'=>$userData['email'],
+            //                         'user_role'=>$userData['user_role']
+            //                         ];
+        //echo "<p>new data exists:<pre>".print_r($_SESSION['userdata'])."</pre></p>";
+        //} 
+        // else {
         //     echo "<p>Session data exists:<pre>".print_r($_SESSION,1)."</pre></p>";
+            // [id] => 1
+            // [email] => aa
+            // [name] => aa
+            // [password] => aa
+            // [user_role] => student
+            // [token] => 
+            // [user_image] => 
         // }
 
     

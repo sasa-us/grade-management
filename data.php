@@ -50,6 +50,9 @@ switch($_POST['action']){
 	case 'register':
 		include 'dataApi/user/register.php';
 		break;
+	case 'checkLogin':
+		include 'dataApi/user/checkloginstatus.php';
+		break;
 }
 
 //convert the $output variable to json, store the result in $outputJSON

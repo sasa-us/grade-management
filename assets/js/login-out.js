@@ -4,7 +4,7 @@ function init() {
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);
-
+    checkLoginStatus();
 }
 // function addClickHandlersToElements() {
 //     debugger;
@@ -16,15 +16,41 @@ var myemail = null;
 var myname = null;
 var myid = null;
 
-function loginUser() {
-    if (localStorage) {
-        var email = $('#email').val();
-        localStorage.setItem('email', email);
-    }
-    // var email = $('#email').val();
-    var email = localStorage.getItem('email');
-    var password = $('#password').val();
+function checkLoginStatus(){
+    $.ajax({
+        url: 'data.php',
+        data: {
+            action: 'checkLogin'
+        },
+        method: 'post',
+        dataType: 'json',
+        success: function(response){
+            console.log('check login status user is logged in', response);
+            //response is 
+            //{ success: true, loginuser : {id: "1", email: "aa", name: "aa", password: "aa", user_role: "student",}
+            //console.log(response.loginuser.name);
+            //console.log(response.loginuser.user_role);
+            if(response.success){
+                showWelcome(response.loginuser);
+                user_role = response.loginuser.user_role;
+                myemail = response.loginuser.email;
+                getDB();
+            }
+        }
+    })
+}
 
+
+
+function loginUser() {
+    // if (localStorage) {
+    //     var email = $('#email').val();
+    //     localStorage.setItem('email', email);
+    // }    
+    //var email = localStorage.getItem('email');
+
+    var email = $('#email').val();
+    var password = $('#password').val();
 
     logindata = {
         email: email,
