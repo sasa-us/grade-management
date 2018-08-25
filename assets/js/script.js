@@ -24,6 +24,7 @@ var student_array = [];
 var input = $("input[type=text]");
 var selectedStudentID = null;
 var confirmDelete = false;
+var ave = 0;
 
 /***************************************************************************************************
  * initializeApp 
@@ -33,7 +34,7 @@ var confirmDelete = false;
  */
 function initializeApp() {
       addClickHandlersToElements();
-      getDB()
+      
 }
 
 /***************************************************************************************************
@@ -47,7 +48,7 @@ function addClickHandlersToElements() {
       $('#cancel').on('click', handleCancelClick);
       $('#getServerData').on('click',getDB);
       $('#saveChange').on('click', updateDBStudentInfor);
-     
+     $('#ave').on('click', calculateGradeAverage);
      
 }
 
@@ -85,7 +86,7 @@ function addStudent() {
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
       var stuID = myid;
-      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0) && stuname == myname) {
+      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0)) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
@@ -120,7 +121,6 @@ function addStudent() {
             };
 
             student_array.push(inputObj);
-            // student_array.unshift(inputObj);
             console.log('array now is ', student_array);
             //clear input
             clearAddStudentFormInputs();
@@ -192,13 +192,7 @@ function renderStudentOnDom(inputObj) {
 
                         $(this).parent().parent().addClass("strikeout");
                         handleDelete(row, stuID);
-                        // show delete confirm modal  
                         
-                        //click confirm run below two 
-                        // removeStudent(row, stuID);
-                        // $(this).parent().parent().fadeOut(500, function(){
-                        //       $(this).remove();
-                        // });
                   }
             }
       });
@@ -264,8 +258,9 @@ function renderStudentOnDom(inputObj) {
  * @calls renderStudentOnDom, calculateGradeAverage, renderGradeAverage
  */
 function updateStudentList(inputObj) {
+      
       renderStudentOnDom(inputObj);
-      var ave = calculateGradeAverage();
+      calculateGradeAverage();
       renderGradeAverage(ave);
 }
 /***************************************************************************************************
@@ -274,16 +269,38 @@ function updateStudentList(inputObj) {
  * @returns {number}
  */
 function calculateGradeAverage() {
-      var total = 0;
-      var count = student_array.length;
-      var ave;
+      // var total = 0;
+      // var count = student_array.length;
+     
       // debugger;
-      for (var i = 0; i < student_array.length; i++) {
-            total += parseFloat(student_array[i].grade);
+      
+
+      var sendData = {
+            student_id: myid,
+            action: 'getAverageGrade'
       }
 
-      ave = (total / count).toFixed(2);
-      console.log('ave is ', ave);
+      $.ajax({
+            url:'data.php',
+            data: sendData,
+            method: 'post',
+            dataType: 'json',
+
+            success: function(response) {
+                  console.log(response);//{success: true, errors: Array(0), average: {…}}
+                  if(response.success) {
+                        ave = response.average.average;
+                        
+                  } else {
+                        console.log('no data response');
+                  }
+            },
+            error: function(response) {
+                  console.log('server not response.');
+            }
+      });
+      ave =parseFloat(ave).toFixed(2);
+      console.log('calculate function average is ', ave);
       return ave;
 }
 /***************************************************************************************************
@@ -326,9 +343,9 @@ function removeStudent(index, studentID) {
 function getDB() {
       $("tbody").empty();
 
-      console.log('in getdb user is ', user_role);
-      console.log('in getDB email is ', myemail);
-      var apiUrl = 'data.php';
+      console.log('in getdb user_role is ', user_role);
+      console.log('in getDB myemail is ', myemail);
+    
       if(user_role == 'admin') {
             //console.log('admin in getdb');
             $.ajax({
@@ -384,7 +401,8 @@ function getDB() {
                   }      
             });
       }
-     
+      calculateGradeAverage();
+      renderGradeAverage(ave);
 }
  
 //connect script.js to data.php
