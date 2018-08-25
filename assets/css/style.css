@@ -8,8 +8,13 @@ body{
     background: inherit;
 }
 
+ul.nav {
+    position: relative;
+    top: 16px;  
+}
 ul.navbar-right {
-    width: 45%;
+    width: 39%;
+    right: 38px;
 }
 /* li#welcomeDisplay {
     position: relative;
@@ -23,7 +28,7 @@ ul.navbar-right {
 ul.navbar-right li {
     position: relative;
     left: 46px;
-    top: 16px;
+   
     margin: 0 8px;
 }
 
@@ -52,10 +57,21 @@ tbody tr:nth-child(even) {
     background-color: gainsboro;
    
 }
-div.getall{
-    margin-top: 15px;
+
+tbody tr:nth-child(odd):hover{
+    background-color: rgba(242,242,242,0.5);
 }
 
+
+
+div.getall{
+    margin-top: 15px;
+    margin-left: 10px;
+    display: inline-block;
+}
+button:hover{
+    box-shadow: 2px 2px 3px #888888;
+}
 button#cancel {
     
     margin-left: 10px;
@@ -78,6 +94,8 @@ input#updateCourse,
 input#updateName{
     color: gray;
 }
+
+
 td { position: relative; }
 
 tr.strikeout td:before {
@@ -144,16 +162,16 @@ button#del-modalcancel {
     }
 }
 
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 925px) {
     body {
         background-color: lightblue;
     }
 
-    #getServerData{
+    /* #getServerData{
         position: relative;
         left: 154px;
         bottom: 48px;
-    }
+    } */
 
     table.table {
         margin-top: 0px;

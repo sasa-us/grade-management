@@ -53,6 +53,9 @@ switch($_POST['action']){
 	case 'checkLogin':
 		include 'dataApi/user/checkloginstatus.php';
 		break;
+	case 'getAverageGrade':
+		include 'dataApi/user/getAverageGrade.php';
+		break;
 }
 
 //convert the $output variable to json, store the result in $outputJSON

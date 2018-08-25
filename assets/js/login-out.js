@@ -34,7 +34,11 @@ function checkLoginStatus(){
                 showWelcome(response.loginuser);
                 user_role = response.loginuser.user_role;
                 myemail = response.loginuser.email;
+                myid = response.loginuser.id;
                 getDB();
+                ave = calculateGradeAverage();
+                console.log('login check ave is ', ave);
+                renderGradeAverage(ave);
             }
         }
     })

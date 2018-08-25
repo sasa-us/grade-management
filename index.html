@@ -35,8 +35,9 @@
             <div class="collapse navbar-collapse" id="bs-nav-demo">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Grade Average :</a>
+                        <div >Grade Average : <span class="avgGrade">0</span></div>
                     </li>
+                    <!-- <li><button id="ave">cal</button></li> -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="welcomeDisplay">
@@ -81,12 +82,11 @@
 
             <div>
                 <button type="button" id='add' class="btn btn-success" onclick="">Add</button>
-                <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Clear</button>
-                <br>
-            </div>
-            <div class="getall">
-                <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
-                <!-- <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="getDB()">Get all student grade from Server</button> -->
+                <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Cancel</button>
+                <div class="getall">
+                    <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
+                    <!-- <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="getDB()">Get all student grade from Server</button> -->
+                </div>
             </div>
 
         </form>
