@@ -10,6 +10,15 @@ if(mysqli_connect_errno()) {
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+
+$email = mysqli_real_escape_string($conn, $email);   
+$password = mysqli_real_escape_string($conn, $password);
+$hashFormat = "$2y$10$";
+$salt = "whyyoulookatmypassword";
+$hash_and_salt = $hashFormat . $salt;
+$password = crypt($password, $hash_and_salt);
+
+
 $query = "SELECT * 
             FROM `students` 
            WHERE `email`='{$email}' 
