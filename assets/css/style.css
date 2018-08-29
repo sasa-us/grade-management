@@ -53,7 +53,9 @@ navbar{
     background-color:#ffffff;
 }
 
-
+span#logouticon {
+    margin-left: 6px;
+}
 /* -- input --- */
 .form-group input:required:valid {
     border-left-color: #ccc;
@@ -169,14 +171,21 @@ button#del-modalcancel {
     margin-left: 15px;
 }
 
-/* ------------ for phone --------------------> */
-@media only screen and (min-width : 768px) and (max-width : 1024px) {
+/* ------------ for ipad --------------------> */
+@media only screen and (min-width : 768px) and (max-width : 1024px)
+and (-webkit-min-device-pixel-ratio: 2) {
     table.table {
-       
+        margin-top: 25px;
         margin-left: 30px;
     }
     table.table.student-list{
         position: relative;
+    }
+    .container {
+        padding-right: 35px;
+        /* padding-left: 15px; */
+        margin-right: 37px;
+        margin-left: auto;
     }
 }
 
@@ -191,14 +200,41 @@ button#del-modalcancel {
         bottom: 48px;
     } */
 
-    table.table {
+    /* table.table {
         margin-top: 0px;
         margin-left: 0px;
-    }
+    } */
 
    #del-modalcancel {
         left: 0px; 
         bottom: 0x;
     }
 
+}
+
+
+
+/* ------------ iphone 4 ----------- */
+@media only screen 
+  and (min-width: 320px) 
+  and (max-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .container {
+        padding-right: 0px;
+        padding-left: 15px;
+        margin-right: 0px;
+        margin-left: auto;
+    }
+    form.student-add-form {
+        z-index: 11;
+    }
+    .table {
+        width: 70%;
+        max-width: fit-content;
+        margin-bottom: 20px;
+    }
+    .student-list-container {
+        position: relative;
+        top: 20px;
+    }
 }

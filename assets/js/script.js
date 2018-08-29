@@ -197,6 +197,7 @@ function renderStudentOnDom(inputObj) {
 //--------------------------------------------------------------------------
 
                         $(this).parent().parent().addClass("strikeout");
+                        
                         handleDelete(row, stuID);
                         
                   }
@@ -452,6 +453,10 @@ function handleDelete(row, stuID){
       showDeleteModal();
       $('#del-modalconfirm').on('click', function() {
             $('#deleteModal').modal('toggle'); 
+            //$('.modal-backdrop.in').remove();
+            $('body').removeClass('modal-backdrop in');
+            $('.modal-backdrop').remove();
+
             console.log($(this));
             removeStudent(row, stuID);
 
@@ -459,6 +464,11 @@ function handleDelete(row, stuID){
                   $(this).remove();
             }); 
       } ); 
+
+      $('#del-modalcancel').on('click', function() {
+            console.log(this);
+            $('tr.strikeout').removeClass("strikeout");
+      });
       
 }
 function showDeleteModal() {
