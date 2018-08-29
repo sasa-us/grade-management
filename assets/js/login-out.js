@@ -36,9 +36,9 @@ function checkLoginStatus(){
                 myemail = response.loginuser.email;
                 myid = response.loginuser.id;
                 getDB();
-                ave = calculateGradeAverage();
+                // ave = calculateGradeAverage();
                 console.log('login check ave is ', ave);
-                renderGradeAverage(ave);
+                // renderGradeAverage(ave);
             }
         }
     })

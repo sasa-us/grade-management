@@ -48,7 +48,7 @@ function addClickHandlersToElements() {
       $('#cancel').on('click', handleCancelClick);
       $('#getServerData').on('click',getDB);
       $('#saveChange').on('click', updateDBStudentInfor);
-     $('#ave').on('click', calculateGradeAverage);
+//      $('#ave').on('click', calculateGradeAverage);
      
 }
 
@@ -73,12 +73,7 @@ function handleCancelClick() {
       $('tr').val();
       clearAddStudentFormInputs();
 }
-/***************************************************************************************************
- * addStudent - creates a student objects based on input fields in the form and adds the object to global student array
- * @param {undefined} none
- * @return undefined
- * @calls clearAddStudentFormInputs, updateStudentList
- */
+
 function addStudent() {
       //get info from input
       var stuname = $('#studentName').val();
@@ -86,7 +81,16 @@ function addStudent() {
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
       var stuID = myid;
-      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade < 100 && grade > 0)) {
+
+      // verifyname(stuname);
+      // var errortext = '';
+      if(stuname.trim() =='' ) {
+           $('input#studentName').addClass('invalid');
+      }
+      if(grade >100 || grade <0) {
+            $('input#studentGrade').addClass('invalid');
+      }
+      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade <= 100 && grade >= 0)) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
@@ -130,6 +134,7 @@ function addStudent() {
       }
       else {
             alert('not valid input');
+            
             clearAddStudentFormInputs();
       }
       //console.log('studen name',stuname);
@@ -143,6 +148,7 @@ function clearAddStudentFormInputs() {
       $('#studentName').val("");
       $('#course').val("");
       $('#studentGrade').val("");
+      $('input').removeClass("invalid");
 }
 
 /***************************************************************************************************
@@ -309,6 +315,7 @@ function calculateGradeAverage() {
  * @returns {undefined} none
  */
 function renderGradeAverage(ave) {
+
       $('.avgGrade').text(ave);
 }
 
@@ -390,6 +397,8 @@ function getDB() {
                               for(var i=0; i<response.data.length; i++) {
                                     renderStudentOnDom(response.data[i]);
                               } 
+                              calculateGradeAverage();
+                              renderGradeAverage(ave);
                         } else {
                               alert('db is empty, please add new one');
                         }
@@ -401,8 +410,8 @@ function getDB() {
                   }      
             });
       }
-      calculateGradeAverage();
-      renderGradeAverage(ave);
+      // calculateGradeAverage();
+      // renderGradeAverage(ave);
 }
  
 //connect script.js to data.php
@@ -432,10 +441,11 @@ function updateDBStudentInfor() {
             dataType: "json",
 
             success: function(response) {
-                  console.log('response is ', response);
+                  console.log('update response is ', response);
+                  getDB();
             }
       });
-
+      
       // location.reload();
 }
 function handleDelete(row, stuID){

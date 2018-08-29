@@ -53,6 +53,24 @@ navbar{
     background-color:#ffffff;
 }
 
+
+/* -- input --- */
+.form-group input:required:valid {
+    border-left-color: #ccc;
+  }
+  .form-group input:invalid {
+    border-left-color: red;
+  }
+  .form-group input:required:focus:valid {
+    background: url("../images/check.jpg") no-repeat 95% 50%;
+    background-size: 25px;
+  }
+  /* .form-group input:focus:invalid { */
+    .form-group input.invalid input:focus {
+    background: url("../images/error.png") no-repeat 95% 50%;
+    background-size: 45px;
+  }
+
 tbody tr:nth-child(even) {
     background-color: gainsboro;
    
