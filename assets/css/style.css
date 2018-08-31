@@ -213,6 +213,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 
+div.modal-backdrop.fade.in {
+    display: none;
+}
 
 /* ------------ iphone 4 ----------- */
 @media only screen 
