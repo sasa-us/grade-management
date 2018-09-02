@@ -4,7 +4,6 @@ session_start();
 $output = ['success'=>false];
 if(!empty($_SESSION['userdata'])){
     $output['success'] = true;
-    //$output['name'] = $_SESSION['userdata']['name'];
     $output['loginuser'] = $_SESSION['userdata'];
     
 } 

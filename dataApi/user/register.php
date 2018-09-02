@@ -78,7 +78,6 @@ if(empty($output['errors'])){
     $output['errors'][] = 'please input valid information to sign up';
 }
 
-// 
     
 
 

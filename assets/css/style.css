@@ -1,34 +1,25 @@
-body{
+body {
     background-color: ivory;
-
-    
 }
-.navbar button{
+
+.navbar button {
     border-style: none;
     background: inherit;
 }
 
 ul.nav {
     position: relative;
-    top: 16px;  
+    top: 16px;
 }
+
 ul.navbar-right {
     width: 39%;
     right: 38px;
 }
-/* li#welcomeDisplay {
-    position: relative;
-    right: 40px;
-}
-#welcomeDisplay span{
-    position: relative;
-    left: 10px;
-} */
 
 ul.navbar-right li {
     position: relative;
     left: 46px;
-   
     margin: 0 8px;
 }
 
@@ -37,86 +28,88 @@ button#add {
     background-color: #337ab7;
     border-color: #2e6da4;
 }
+
 div.student-add-form {
     z-index: 11;
 }
+
 .student-list-container {
     position: relative;
-
 }
+
 .student-list thead {
     background: gainsboro;
- 
 }
 
-navbar{
-    background-color:#ffffff;
+navbar {
+    background-color: #ffffff;
 }
 
 span#logouticon {
     margin-left: 6px;
 }
+
 /* -- input --- */
 .form-group input:required:valid {
     border-left-color: #ccc;
-  }
-  .form-group input:invalid {
+}
+
+.form-group input:invalid {
     border-left-color: red;
-  }
-  .form-group input:required:focus:valid {
+}
+
+.form-group input:required:focus:valid {
     background: url("../images/check.jpg") no-repeat 95% 50%;
     background-size: 25px;
-  }
-  /* .form-group input:focus:invalid { */
-    .form-group input.invalid input:focus {
+}
+
+/* .form-group input:focus:invalid { */
+.form-group input.invalid input:focus {
     background: url("../images/error.png") no-repeat 95% 50%;
     background-size: 45px;
-  }
+}
 
 tbody tr:nth-child(even) {
     background-color: gainsboro;
-   
 }
 
-tbody tr:nth-child(odd):hover{
-    background-color: rgba(242,242,242,0.5);
+tbody tr:nth-child(odd):hover {
+    background-color: rgba(242, 242, 242, 0.5);
 }
 
-
-
-div.getall{
+div.getall {
     margin-top: 15px;
     margin-left: 10px;
     display: inline-block;
 }
-button:hover{
+
+button:hover {
     box-shadow: 2px 2px 3px #888888;
 }
+
 button#cancel {
-    
     margin-left: 10px;
 }
 
-table.table{
+table.table {
     margin-top: 25px;
-   
 }
 
 .tdbutton {
     width: 80px;
 }
-.td-Delbutton:hover{
 
-}
+.td-Delbutton:hover {}
 
 input#updateGrade,
 input#updateCourse,
-input#updateName{
+input#updateName {
     color: gray;
 }
 
-
-td { position: relative; }
+td {
+    position: relative;
+}
 
 tr.strikeout td:before {
     content: " ";
@@ -125,38 +118,36 @@ tr.strikeout td:before {
     left: 0;
     border-bottom: 1px solid red;
     width: 100%;
-  
-  }
-  
-  tr.strikeout td:after {
+}
+
+tr.strikeout td:after {
     content: "\00B7";
     font-size: 1px;
-  }
-
-
+}
 
 /* -------------loginmodal----------------- */
-
 input#rememberme-0 {
     margin-left: -12px;
 }
 
-
 /* ---delete modal--- */
- #del-iconbox{
+#del-iconbox {
     text-align: center;
     margin: 0 auto;
     font-size: 3em;
     color: indianred;
- }
-#del-modalhead h4{
-    text-align: center;
-    color:  indianred;
 }
+
+#del-modalhead h4 {
+    text-align: center;
+    color: indianred;
+}
+
 button#del-modalcancel {
-    left: 0px; 
+    left: 0px;
     bottom: 0x;
 }
+
 /*---need login modal ---*/
 #needLogin-iconbox {
     text-align: center;
@@ -165,10 +156,11 @@ button#del-modalcancel {
     color: #ff9800;
 }
 
-#needLogin-modalhead h4{
+#needLogin-modalhead h4 {
     text-align: center;
-    color:  #ff9800;
+    color: #ff9800;
 }
+
 /* ---------------------update form modal--------------------> */
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
@@ -178,20 +170,22 @@ button#del-modalcancel {
 .modal-body .form-horizontal .control-label {
     text-align: left;
 }
+
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
 
 /* ------------ for ipad --------------------> */
-@media only screen and (min-width : 768px) and (max-width : 1024px)
-and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (-webkit-min-device-pixel-ratio: 2) {
     table.table {
         margin-top: 25px;
         margin-left: 30px;
     }
-    table.table.student-list{
+
+    table.table.student-list {
         position: relative;
     }
+
     .container {
         padding-right: 35px;
         /* padding-left: 15px; */
@@ -205,38 +199,35 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-color: lightblue;
     }
 
-
-   #del-modalcancel {
-        left: 0px; 
+    #del-modalcancel {
+        left: 0px;
         bottom: 0x;
     }
-
 }
-
 
 div.modal-backdrop.fade.in {
     display: none;
 }
 
 /* ------------ iphone 4 ----------- */
-@media only screen 
-  and (min-width: 320px) 
-  and (max-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-width: 320px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
     .container {
         padding-right: 0px;
         padding-left: 15px;
         margin-right: 0px;
         margin-left: auto;
     }
+
     form.student-add-form {
         z-index: 11;
     }
+
     .table {
         width: 70%;
         max-width: fit-content;
         margin-bottom: 20px;
     }
+
     .student-list-container {
         position: relative;
         top: 20px;

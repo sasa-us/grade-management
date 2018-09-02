@@ -1,7 +1,5 @@
 <?
 session_start();
-//require('sessions.inc.php'); for store session id to db
-
 
 if(mysqli_connect_errno()) {
     echo 'fail to coonect MYSQL: '.mysqli_connect_error();

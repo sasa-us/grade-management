@@ -9,11 +9,8 @@ $query = "SELECT *
             (SELECT `id` FROM `students` WHERE `email`='$email')
         ";
 $result = null;
-//send the query to the database, store the result of the query into $result
 $result = mysqli_query($conn, $query);
 
-
-//check if $result is empty.
 if(empty($result)) {
 	$output['errors'][] = mysqli_error($conn);
 } else {
