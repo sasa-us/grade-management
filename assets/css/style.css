@@ -157,7 +157,18 @@ button#del-modalcancel {
     left: 0px; 
     bottom: 0x;
 }
+/*---need login modal ---*/
+#needLogin-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: #ff9800;
+}
 
+#needLogin-modalhead h4{
+    text-align: center;
+    color:  #ff9800;
+}
 /* ---------------------update form modal--------------------> */
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
@@ -194,16 +205,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
         background-color: lightblue;
     }
 
-    /* #getServerData{
-        position: relative;
-        left: 154px;
-        bottom: 48px;
-    } */
-
-    /* table.table {
-        margin-top: 0px;
-        margin-left: 0px;
-    } */
 
    #del-modalcancel {
         left: 0px; 
