@@ -1,4 +1,3 @@
-
 $(document).ready(initializeApp);
 
 var student_array = [];
@@ -9,19 +8,14 @@ var ave = 0;
 
 function initializeApp() {
       addClickHandlersToElements();
-      
 }
-
 
 function addClickHandlersToElements() {
       $('#add').on("click", handleAddClicked);
       $('#cancel').on('click', handleCancelClick);
-      $('#getServerData').on('click',getDB);
+      $('#getServerData').on('click', getDB);
       $('#saveChange').on('click', updateDBStudentInfor);
-//      $('#ave').on('click', calculateGradeAverage);
-     
 }
-
 
 function handleAddClicked() {
       addStudent();
@@ -34,20 +28,19 @@ function handleCancelClick() {
 }
 
 function addStudent() {
-      //get info from input
       var stuname = $('#studentName').val();
       var course = $('#course').val();
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
       var stuID = myid;
 
-      if(stuname.trim() =='' ) {
-           $('input#studentName').addClass('invalid');
+      if (stuname.trim() == '') {
+            $('input#studentName').addClass('invalid');
       }
-      if(grade >100 || grade <0) {
+      if (grade > 100 || grade < 0) {
             $('input#studentGrade').addClass('invalid');
       }
-      if($.isNumeric(grade) && course.trim() !== '' && stuname.trim()!=='' && (grade <= 100 && grade >= 0)) {
+      if ($.isNumeric(grade) && course.trim() !== '' && stuname.trim() !== '' && (grade <= 100 && grade >= 0)) {
             var inputObj = {
                   name: stuname,
                   grade: grade,
@@ -61,13 +54,13 @@ function addStudent() {
                   method: 'POST',
                   dataType: "json",
                   data: inputObj,
-            
-                  success: function(response) {
+
+                  success: function (response) {
                         debugger;
                         console.log('response: ', response);
-                       
-                        if(response.success) {
-                              stuID = response.new_id;  
+
+                        if (response.success) {
+                              stuID = response.new_id;
                               console.log('response.new_id ', response.new_id);
                         }
                   }
@@ -78,28 +71,21 @@ function addStudent() {
                   name: stuname,
                   grade: grade,
                   course_name: course
-                  
+
             };
 
             student_array.push(inputObj);
             console.log('array now is ', student_array);
-            //clear input
             clearAddStudentFormInputs();
-      
-            //add to update array
             updateStudentList(inputObj);
-      }
-      else {
+      } else {
             alert('not valid input');
-            
+
             clearAddStudentFormInputs();
       }
-      //console.log('studen name',stuname);
-      
 }
 
 function clearAddStudentFormInputs() {
-      //why input.val(''); not work???
       $('#studentName').val("");
       $('#course').val("");
       $('#studentGrade').val("");
@@ -107,7 +93,6 @@ function clearAddStudentFormInputs() {
 }
 
 function renderStudentOnDom(inputObj) {
-      //console.log('inside render dom obj.id is', inputObj.id);
       var stuID = inputObj.id;
       var tr = $('<tr>');
 
@@ -115,8 +100,7 @@ function renderStudentOnDom(inputObj) {
             text: inputObj.name
       });
       var tdCourse = $('<td>', {
-            //change name to match DB column KEY
-            //text: inputObj.name
+
             text: inputObj.course_name
       });
       var tdGrade = $('<td>', {
@@ -126,28 +110,25 @@ function renderStudentOnDom(inputObj) {
             class: 'tdbutton td-Delbutton'
       });
       var delButton = $('<button>', {
-            // text: 'Delete',
             class: 'btn btn-danger trigger-btn',
-            
+
             "data-toggle": "modal",
             on: {
-                  click: function(event) {
+                  click: function (event) {
                         event.stopPropagation();
-                        // console.log('this is ', $(this));// this is button clicked
-                        // console.log('this.parent() is', $(this).parent());
-                        var row = student_array.indexOf(inputObj);  //get the index of passed in object in array  
-                        console.log('row of this obj is ',row);
+                        var row = student_array.indexOf(inputObj);
+                        console.log('row of this obj is ', row);
                         console.log('deleted row is ', row);
                         console.log('del student id is ', stuID);
                         $(this).parent().parent().addClass("strikeout");
-                        
+
                         handleDelete(row, stuID);
-                        
+
                   }
             }
       });
 
-     
+
       var delspan = $('<span>');
       var deli = $('<i>', {
             class: 'fas fa-trash'
@@ -161,14 +142,16 @@ function renderStudentOnDom(inputObj) {
             class: 'tdbutton td-editbutton'
       });
       var editButton = $('<button>', {
-            class: 'btn btn-primary', 
-            "data-toggle":  "modal",
+            class: 'btn btn-primary',
+            "data-toggle": "modal",
             "data-target": "#myModalHorizontal",
             on: {
-                  click: function(e) {
+                  click: function (e) {
                         e.stopPropagation();
                         console.log('this is ', $(this));
-                        $('#myModalHorizontal').modal({show: true});
+                        $('#myModalHorizontal').modal({
+                              show: true
+                        });
 
                         //show stu info on form modal
                         console.log(inputObj);
@@ -176,7 +159,7 @@ function renderStudentOnDom(inputObj) {
                         // console.log(inputObj.grade);
                         // console.log(inputObj.course_name);
                         selectedStudentID = parseInt(inputObj.id);
-                        console.log(selectedStudentID);
+                        console.log('selected stduent id ', selectedStudentID);
                         $('#updateName').val(inputObj.name);
                         $('#updateCourse').val(inputObj.course_name);
                         $('#updateGrade').val(inputObj.grade);
@@ -184,7 +167,7 @@ function renderStudentOnDom(inputObj) {
             }
       });
       var editspan = $('<span>');
-      var editi = $('<i>',  {
+      var editi = $('<i>', {
             class: 'fas fa-pencil-alt'
       });
       editspan.append(editi);
@@ -199,9 +182,7 @@ function renderStudentOnDom(inputObj) {
       $('.student-list tbody').append(tr);
 }
 
-
 function updateStudentList(inputObj) {
-      
       renderStudentOnDom(inputObj);
       calculateGradeAverage();
       renderGradeAverage(ave);
@@ -214,25 +195,25 @@ function calculateGradeAverage() {
       }
 
       $.ajax({
-            url:'data.php',
+            url: 'data.php',
             data: sendData,
             method: 'post',
             dataType: 'json',
 
-            success: function(response) {
-                  console.log(response);//{success: true, errors: Array(0), average: {…}}
-                  if(response.success) {
+            success: function (response) {
+                  console.log(response); //{success: true, errors: Array(0), average: {…}}
+                  if (response.success) {
                         ave = response.average.average;
-                        
+
                   } else {
                         console.log('no data response');
                   }
             },
-            error: function(response) {
+            error: function (response) {
                   console.log('server not response.');
             }
       });
-      ave =parseFloat(ave).toFixed(2);
+      ave = parseFloat(ave).toFixed(2);
       console.log('calculate function average is ', ave);
       return ave;
 }
@@ -243,7 +224,7 @@ function renderGradeAverage(ave) {
 }
 
 function removeStudent(index, studentID) {
-      student_array.splice(index, 1); //index in array will automatically update 
+      student_array.splice(index, 1);
       console.log('after remove index now array ', student_array);
       console.log('remove function id is ', studentID);
 
@@ -255,7 +236,7 @@ function removeStudent(index, studentID) {
                   action: 'delete'
             },
             method: 'POST',
-            success: function(response) {
+            success: function (response) {
                   console.log('response is ', response);
             }
 
@@ -269,8 +250,8 @@ function getDB() {
 
       console.log('in getdb user_role is ', user_role);
       console.log('in getDB myemail is ', myemail);
-    
-      if(user_role == 'admin') {
+
+      if (user_role == 'admin') {
             //console.log('admin in getdb');
             $.ajax({
                   dataType: 'json',
@@ -279,24 +260,23 @@ function getDB() {
                   },
                   url: 'data.php',
                   method: 'POST',
-                  success: function(studentRecord) {
+                  success: function (studentRecord) {
                         //studentRecord.data = [{id: 1, name: xx, grade: 80, course: 'xx', }, {..}, {..}, {..}.....]
                         // console.log('response is ', studentRecord);
                         // console.log( 'data is ',studentRecord.data);
                         // console.log('server is running');
-      
-                        for(var i=0; i<studentRecord.data.length; i++) {
-                              renderStudentOnDom(studentRecord.data[i]);                                  
+
+                        for (var i = 0; i < studentRecord.data.length; i++) {
+                              renderStudentOnDom(studentRecord.data[i]);
                         }
                   },
-      
-                  error: function() {
+
+                  error: function () {
                         $('tbody').html('<p>An error has occurred</p>');
                         console.log('error');
-                     },       
+                  },
             });
-      }
-      else if(user_role == 'student') {
+      } else if (user_role == 'student') {
             console.log('getdb script.js email is ', myemail);
             var getdata = {
                   email: myemail,
@@ -308,48 +288,53 @@ function getDB() {
                   url: 'data.php',
                   method: 'post',
                   dataType: 'json',
-                  success: function(response) {
-                        if(response.success) {
-                             console.log(response);
-                              for(var i=0; i<response.data.length; i++) {
+                  success: function (response) {
+                        if (response.success) {
+                              console.log(response);
+                              for (var i = 0; i < response.data.length; i++) {
                                     renderStudentOnDom(response.data[i]);
-                              } 
+                              }
                               calculateGradeAverage();
                               renderGradeAverage(ave);
                         } else {
                               alert('db is empty, please add new one');
                         }
-                        
+
                   },
-                  error: function() {
+                  error: function () {
                         $('tbody').html('<p>An error has occurred</p>');
                         console.log('error');
-                  }      
+                  }
             });
       }
       // calculateGradeAverage();
       // renderGradeAverage(ave);
 }
- 
+
 //connect script.js to data.php
 //inside different ajax call=>
-   //change url to data.php
-   //change thd data to action: different action value
+//change url to data.php
+//change thd data to action: different action value
 //change function renderStudentOnDom(inputObj) {
-   //inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
+//inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
 function updateDBStudentInfor() {
+      if (myid == null) {
+            needLoginModal();
+            return;
+      }
       var studentObj = {
             name: $("#updateName").val(),
             course_name: $("#updateCourse").val(),
             grade: parseInt($("#updateGrade").val()),
-      
+
       }
+      console.log('update sutdent name', studentObj.name);
       var sendData = {
             name: studentObj.name,
             course_name: studentObj.course_name,
             grade: studentObj.grade,
             id: selectedStudentID,
-            action: "update" 
+            action: "update"
       }
       $.ajax({
             data: sendData,
@@ -357,33 +342,26 @@ function updateDBStudentInfor() {
             method: "POST",
             dataType: "json",
 
-            success: function(response) {
-                  if(response.success){
-                        console.log('update response is ', response);
-                        getDB();  
-                  }
-                  else {
-                        needLoginModal();
-                  }
-                  
+            success: function (response) {
+                  console.log('update response is ', response);
+                  getDB();
+                 
             }
       });
-      
+
       // location.reload();
 }
 
 function needLoginModal() {
-      
+
       $('#needLoginModal').modal('show');
 }
 
 
-
-
-function handleDelete(row, stuID){
+function handleDelete(row, stuID) {
       showDeleteModal();
-      $('#del-modalconfirm').on('click', function() {
-            $('#deleteModal').modal('toggle'); 
+      $('#del-modalconfirm').on('click', function () {
+            $('#deleteModal').modal('toggle');
             //$('.modal-backdrop.in').remove();
             $('body').removeClass('modal-backdrop in');
             $('.modal-backdrop').remove();
@@ -391,18 +369,18 @@ function handleDelete(row, stuID){
             console.log($(this));
             removeStudent(row, stuID);
 
-            $('tr.strikeout').fadeOut(500, function(){
+            $('tr.strikeout').fadeOut(500, function () {
                   $(this).remove();
-            }); 
-      } ); 
+            });
+      });
 
-      $('#del-modalcancel').on('click', function() {
+      $('#del-modalcancel').on('click', function () {
             console.log(this);
             $('tr.strikeout').removeClass("strikeout");
       });
-      
+
 }
+
 function showDeleteModal() {
       $('#deleteModal').modal('show');
 }
-

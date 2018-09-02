@@ -17,22 +17,12 @@ if(empty($result)) {
     $output['errors'][] = mysqli_error($conn);
 } 
 else {
-    // if(mysqli_num_rows($result)>0) {
-    //     $output['success'] = true;
-    //     $output['data'] = [];
-
-    //     while($row=mysqli_fetch_assoc($result)) {
-    //         $output['data'][] = $row;
-    //     }
-    // }
     if(mysqli_num_rows($result)>0) {
             $output['success'] = true;
            
             
            $row=mysqli_fetch_assoc($result);
-             
-           $output['average'] = $row;
-            
+           $output['average'] = $row;    
        }
      
     else {

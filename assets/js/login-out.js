@@ -1,22 +1,18 @@
 $(document).ready(init);
+
 function init() {
-    // addClickHandlersToElements();
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);
     checkLoginStatus();
 }
-// function addClickHandlersToElements() {
-//     debugger;
-//     $("#loginButton").on('click', loginUser);
-//     $("#logoutButton").on('click', logoutUser);
-// }
+
 var user_role = null;
 var myemail = null;
 var myname = null;
 var myid = null;
 
-function checkLoginStatus(){
+function checkLoginStatus() {
     $.ajax({
         url: 'data.php',
         data: {
@@ -24,13 +20,13 @@ function checkLoginStatus(){
         },
         method: 'post',
         dataType: 'json',
-        success: function(response){
+        success: function (response) {
             console.log('check login status user is logged in', response);
             //response is 
             //{ success: true, loginuser : {id: "1", email: "aa", name: "aa", password: "aa", user_role: "student",}
             //console.log(response.loginuser.name);
             //console.log(response.loginuser.user_role);
-            if(response.success){
+            if (response.success) {
                 showWelcome(response.loginuser);
                 user_role = response.loginuser.user_role;
                 myemail = response.loginuser.email;
@@ -66,17 +62,17 @@ function loginUser() {
         data: logindata,
         dataType: 'json',
         method: 'post',
-        success: function(response) {
-           
+        success: function (response) {
+
             //success: true, errors: Array(0), user: {…. query selected column name from students table}
-            if(response.success) {
+            if (response.success) {
                 $('#myModal').modal('hide');
                 user_role = response.user['user_role'];
                 myemail = response.user['email'];
-                
+
                 myid = response.user['id'];
                 myname = response.user['name'];
-               
+
                 console.log(response.user);
                 console.log('db email ', myemail);
                 console.log('user role is ', user_role);
@@ -84,12 +80,11 @@ function loginUser() {
                 console.log(myname);
                 showWelcome(response.user);
                 getDB();
-            }
-            else {
+            } else {
                 activeRegister();
             }
         },
-        error: function(response) {
+        error: function (response) {
             // console.log('server not work');
             console.log(JSON.stringify(response));
 
@@ -101,35 +96,37 @@ function activeRegister() {
     alert('need register');
     $('#myTab li:nth-child(1)').removeClass('active');
     $('#myTab li:nth-child(2)').addClass('active');
-    
+
     $('div#signup').addClass('active in');
     $('div#signin').removeClass('active in');
-    
+
 }
 
 function activelogin() {
     alert('login again please');
     $('#myTab li:nth-child(2)').removeClass('active');
     $('#myTab li:nth-child(1)').addClass('active');
-    
+
     $('div#signin').addClass('active in');
     $('div#signup').removeClass('active in');
-    
+
 }
+
 function showWelcome(userInfo) {
     // console.log("show welcome userinfo", userInfo);
     //{id: "1", email: "aa", name: "aa", password: "aa", rights: "0", …}
-    if(userInfo) {
+    if (userInfo) {
         $('#loginSection').hide();
         $('#logoutSection').show();
         $('#loginUserName').text(userInfo.name);
-    }else {
+    } else {
         console.log('bye');
         $('#logoutSection').hide();
         $('#loginSection').show();
         $('#loginUserName').empty();
     }
 }
+
 function logoutUser() {
     var logoutData = {
         action: 'logout'
@@ -139,31 +136,31 @@ function logoutUser() {
         data: logoutData,
         dataType: 'json',
         method: 'post',
-        success: function(response) {
-            console.log( 'Logout response is ', response);
-            if(response.success) {
-                
+        success: function (response) {
+            console.log('Logout response is ', response);
+            if (response.success) {
+
                 showWelcome(response.user);
                 $("tbody").empty();
                 // window.localStorage.clear();
             }
         },
-        error: function(response) {
+        error: function (response) {
             console.log('server not response');
         }
-    
+
     });
-}//end logoutUser()
+} //end logoutUser()
 
 function registUser() {
- 
+
     var registemail = $('#registemail').val();
     var registname = $('#registname').val();
     var registpassword = $('#registpassword').val();
     var reenterpassword = $('#reenterpassword').val();
 
     // checkAvailableEmail();
-    if(registpassword === reenterpassword) {
+    if (registpassword === reenterpassword) {
         var registData = {
             email: registemail,
             name: registname,
@@ -176,23 +173,23 @@ function registUser() {
             data: registData,
             method: 'post',
             dataType: 'json',
-            success: function(response) {
-                console.log('register response',response);
-                if(response.success) {
+            success: function (response) {
+                console.log('register response', response);
+                if (response.success) {
                     //modal register success, please login /
                     //let user login again
-                    activelogin(); 
+                    activelogin();
                 }
 
             },
-            error: function(response) {
+            error: function (response) {
                 console.log('server not work');
             }
         });
     } else {
         alert('check psw');
     }
- 
-    
+
+
 
 }
