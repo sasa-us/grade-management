@@ -1,48 +1,18 @@
-/* information about jsdocs: 
-* param: http://usejsdoc.org/tags-param.html#examples
-* returns: http://usejsdoc.org/tags-returns.html
-* 
-/**
- * Listen for the document to load and initialize the application
- */
+
 $(document).ready(initializeApp);
 
-/**
- * Define all global variables here.  
- */
-/***********************
- * student_array - global array to hold student objects
- * input - global variable to get the input lement of DOM 
- * @type {Array}
- * example of student_array after input: 
- * student_array = [
- *  { name: 'Jake', course: 'Math', grade: 85 },
- *  { name: 'Jill', course: 'Comp Sci', grade: 85 }
- * ];
- */
 var student_array = [];
 var input = $("input[type=text]");
 var selectedStudentID = null;
 var confirmDelete = false;
 var ave = 0;
 
-/***************************************************************************************************
- * initializeApp 
- * @params {undefined} none
- * @returns: {undefined} none
- * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
- */
 function initializeApp() {
       addClickHandlersToElements();
       
 }
 
-/***************************************************************************************************
- * addClickHandlerstoElements
- * @params {undefined} 
- * @returns  {undefined}
- *     
- */
+
 function addClickHandlersToElements() {
       $('#add').on("click", handleAddClicked);
       $('#cancel').on('click', handleCancelClick);
@@ -53,21 +23,10 @@ function addClickHandlersToElements() {
 }
 
 
-/***************************************************************************************************
- * handleAddClicked - Event Handler when user clicks the add button
- * @param {object} event  The event object from the click
- * @return: 
-       none
- */
 function handleAddClicked() {
       addStudent();
 }
-/***************************************************************************************************
- * handleCancelClicked - Event Handler when user clicks the cancel button, should clear out student form
- * @param: {undefined} none
- * @returns: {undefined} none
- * @calls: clearAddStudentFormInputs
- */
+
 function handleCancelClick() {
       console.log('cancel');
       $('tr').val();
@@ -82,8 +41,6 @@ function addStudent() {
       var grade = parseFloat(gradeStr);
       var stuID = myid;
 
-      // verifyname(stuname);
-      // var errortext = '';
       if(stuname.trim() =='' ) {
            $('input#studentName').addClass('invalid');
       }
@@ -140,9 +97,7 @@ function addStudent() {
       //console.log('studen name',stuname);
       
 }
-/***************************************************************************************************
- * clearAddStudentForm - clears out the form values based on inputIds variable
- */
+
 function clearAddStudentFormInputs() {
       //why input.val(''); not work???
       $('#studentName').val("");
@@ -151,11 +106,6 @@ function clearAddStudentFormInputs() {
       $('input').removeClass("invalid");
 }
 
-/***************************************************************************************************
- * renderStudentOnDom - take in a student object, create html elements from the values and then append the elements
- * into the .student_list tbody
- * @param {object} studentObj a single student object with course, name, and grade inside
- */
 function renderStudentOnDom(inputObj) {
       //console.log('inside render dom obj.id is', inputObj.id);
       var stuID = inputObj.id;
@@ -189,13 +139,6 @@ function renderStudentOnDom(inputObj) {
                         console.log('row of this obj is ',row);
                         console.log('deleted row is ', row);
                         console.log('del student id is ', stuID);
-//--------------------------------------original directly remove-------------
-                        // removeStudent(row, stuID);
-                        // $(this).parent().parent().fadeOut(500, function(){
-                        //       $(this).remove();
-                        // });
-//--------------------------------------------------------------------------
-
                         $(this).parent().parent().addClass("strikeout");
                         
                         handleDelete(row, stuID);
@@ -256,32 +199,15 @@ function renderStudentOnDom(inputObj) {
       $('.student-list tbody').append(tr);
 }
 
-// class: 'fas fa-edit'
-// class: 'fas fa-pencil-alt'
-/***************************************************************************************************
- * updateStudentList - centralized function to update the average and call student list update
- * @param students {array} the array of student objects
- * @returns {undefined} none
- * @calls renderStudentOnDom, calculateGradeAverage, renderGradeAverage
- */
+
 function updateStudentList(inputObj) {
       
       renderStudentOnDom(inputObj);
       calculateGradeAverage();
       renderGradeAverage(ave);
 }
-/***************************************************************************************************
- * calculateGradeAverage - loop through the global student array and calculate average grade and return that value
- * @param: {array} students  the array of student objects
- * @returns {number}
- */
-function calculateGradeAverage() {
-      // var total = 0;
-      // var count = student_array.length;
-     
-      // debugger;
-      
 
+function calculateGradeAverage() {
       var sendData = {
             student_id: myid,
             action: 'getAverageGrade'
@@ -310,22 +236,12 @@ function calculateGradeAverage() {
       console.log('calculate function average is ', ave);
       return ave;
 }
-/***************************************************************************************************
- * renderGradeAverage - updates the on-page grade average
- * @param: {number} average    the grade average
- * @returns {undefined} none
- */
+
 function renderGradeAverage(ave) {
 
       $('.avgGrade').text(ave);
 }
 
-
-/***************************************************************************************************
- * removeStudent - remove obj from student array after click delete button on DOM
- * @param: {number} array index    the index of student_array 
- * @returns {undefined} none
- */
 function removeStudent(index, studentID) {
       student_array.splice(index, 1); //index in array will automatically update 
       console.log('after remove index now array ', student_array);
@@ -442,13 +358,28 @@ function updateDBStudentInfor() {
             dataType: "json",
 
             success: function(response) {
-                  console.log('update response is ', response);
-                  getDB();
+                  if(response.success){
+                        console.log('update response is ', response);
+                        getDB();  
+                  }
+                  else {
+                        needLoginModal();
+                  }
+                  
             }
       });
       
       // location.reload();
 }
+
+function needLoginModal() {
+      
+      $('#needLoginModal').modal('show');
+}
+
+
+
+
 function handleDelete(row, stuID){
       showDeleteModal();
       $('#del-modalconfirm').on('click', function() {
