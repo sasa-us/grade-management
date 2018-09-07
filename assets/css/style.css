@@ -130,6 +130,12 @@ input#rememberme-0 {
     margin-left: -12px;
 }
 
+#forgotlink {
+    margin: 11px 2px;
+}
+
+
+
 /* ---delete modal--- */
 #del-iconbox {
     text-align: center;

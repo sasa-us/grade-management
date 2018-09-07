@@ -1,3 +1,5 @@
 mysql_connect.php
 sql
 cronjob
+email_config.php
+/vendor/
