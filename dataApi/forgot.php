@@ -4,9 +4,8 @@ require('../vendor/phpmailer/PHPMailer/PHPMailerAutoload.php');
 
 require_once('../mysql_connect.php');
 require_once('../vendor/phpmailer/email_config.php');
-
-// $conn = mysqli_connect("localhost", "root", "root", "grade-management");
-
+// echo $_SERVER['HTTP_REFERER']; 
+//print_r($_SERVER);
 function ifItIsMethod($method=null){
     if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
         return true;
@@ -82,13 +81,18 @@ if(ifItIsMethod('POST')) {
               
 
                 $mail->Subject = 'change password confrim';
+
+                $hostname = pathinfo($_SERVER['HTTP_REFERER'])['dirname']; //http://localhost:8000/grade-management/ 
+                $path = "http://{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}/grade-management/";
                 $mail->Body = '<p>Please click link to reset password.
-                <a href="http://localhost:8000/grade-management/dataApi/reset.php?email='.$email.'&token='.$token.' ">http://localhost:8000/grade-management/dataApi/reset.php?email='.$email.'&token='.$token.'</a>
-                
+
+                <a href='.$path.'dataApi/reset.php?email='.$email.'&token='.$token.'> dataApi/reset.php?email='.$email.'&token='.$token.'</a>
+            
                 </p>';
-               
+
+                // <a href="http://localhost:8000/grade-management/dataApi/reset.php?email='.$email.'&token='.$token.' ">http://localhost:8000/grade-management/dataApi/reset.php?email='.$email.'&token='.$token.'</a>
+
                 if($mail->send()) {
-                   
                     $emailSent = true;
                 } else {
                     echo 'not sent email !!!';

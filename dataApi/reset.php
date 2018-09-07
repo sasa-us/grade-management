@@ -99,7 +99,8 @@ if($stmt = mysqli_prepare($conn, $query)) {
                             </div><!-- Body-->
 <?php else: ?>
 <h2>Your password updated successfully! </h2>
-<p>Please Login <a href="http://localhost:8000/grade-management/">grade-management system </a>again</p>
+<!-- <p>Please Login <a href="http://localhost:8000/grade-management/">grade-management system </a>again</p> -->
+<p>Please Login <a href="http://www.sharrylu.com/grade-management/">grade-management system </a>again</p>
 
 <?php endIf; ?>
                         </div>
