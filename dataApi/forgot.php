@@ -1,9 +1,9 @@
 <?php
-require '../vendor/autoload.php';
-require('../vendor/phpmailer/PHPMailer/PHPMailerAutoload.php');
+// require '../vendor/autoload.php';
+require('phpmailer/phpmailer/PHPMailerAutoload.php');
 
 require_once('../mysql_connect.php');
-require_once('../vendor/phpmailer/email_config.php');
+require_once('phpmailer/email_config.php');
 // echo $_SERVER['HTTP_REFERER']; 
 //print_r($_SERVER);
 function ifItIsMethod($method=null){
