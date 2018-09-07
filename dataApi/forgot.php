@@ -5,7 +5,7 @@ require('../vendor/phpmailer/PHPMailer/PHPMailerAutoload.php');
 require_once('../mysql_connect.php');
 require_once('../vendor/phpmailer/email_config.php');
 
-$conn = mysqli_connect("localhost", "root", "root", "grade-management");
+// $conn = mysqli_connect("localhost", "root", "root", "grade-management");
 
 function ifItIsMethod($method=null){
     if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
