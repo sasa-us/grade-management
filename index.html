@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous">    
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -20,7 +20,8 @@
         <div class="navbar navbar-default">
             <!-- only show this element when the isnt on mobile -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo"
+                    aria-expanded="false">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -30,12 +31,12 @@
             <div class="collapse navbar-collapse" id="bs-nav-demo">
                 <ul class="nav navbar-nav">
                     <li>
-                        <div >Grade Average : <span class="avgGrade">0</span></div>
+                        <div>Grade Average : <span class="avgGrade">0</span></div>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="welcomeDisplay">
-                        <p>Welcome 
+                        <p>Welcome
                             <span id='loginUserName'> </span>
                         </p>
                     </li>
@@ -57,10 +58,11 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user "></span>
                 </span>
-                <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Student Name" required>
-                
+                <input type="text" class="form-control" name="studentName" id="studentName" placeholder="Student Name"
+                    required>
+
             </div>
-            
+
             <div class="form-group input-group">
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-list-alt"></span>
@@ -72,7 +74,8 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-education"></span>
                 </span>
-                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade" required>
+                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade"
+                    required>
             </div>
 
             <div>
@@ -100,7 +103,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -110,7 +113,8 @@
     <!----------------------------- ----------- Modals --------------------------------------- -------------->
     <!------------------------------- update-form MODAL -------------------------------------------->
 
-    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -152,7 +156,8 @@
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-education"></span>
                                 </span>
-                                <input type="text" class="form-control" name="studentGrade" id="updateGrade" placeholder="Student Grade" />
+                                <input type="text" class="form-control" name="studentGrade" id="updateGrade"
+                                    placeholder="Student Grade" />
                             </div>
                         </div>
 
@@ -177,7 +182,8 @@
     <!--end update-form modal -->
 
     <!---------------------------------------------- login/signup modal ------------------------------------------>
-    <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <br>
@@ -197,7 +203,8 @@
                 <div class="modal-body">
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade in" id="why">
-                            <p>We need this information so that you can receive access to the site and its content. Rest assured
+                            <p>We need this information so that you can receive access to the site and its content.
+                                Rest assured
                                 your information will not shown to anyone.</p>
                             <p></p>
                             <br> Please contact
@@ -212,8 +219,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="email">Email:</label>
                                         <div class="controls">
-                                            <input required="" id="email" name="email" type="text" class="form-control" placeholder="example@lfz.edu" class="input-medium"
-                                                required="">
+                                            <input required="" id="email" name="email" type="text" class="form-control"
+                                                placeholder="example@lfz.edu" class="input-medium" required="">
                                         </div>
                                     </div>
 
@@ -221,7 +228,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="password">Password:</label>
                                         <div class="controls">
-                                            <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium" minlength="1" maxlength="8">
+                                            <input required="" id="password" name="password" class="form-control" type="password"
+                                                placeholder="********" class="input-medium" minlength="1" maxlength="8">
                                         </div>
                                     </div>
 
@@ -230,7 +238,8 @@
                                         <label class="control-label" for="rememberme"></label>
                                         <div class="controls">
                                             <label class="checkbox inline" for="rememberme-0">
-                                                <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me"> Remember me
+                                                <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
+                                                Remember me
                                             </label>
                                         </div>
                                     </div>
@@ -242,6 +251,7 @@
                                             <button type="button" id="loginFormButton" name="loginFormButton" class="btn btn-success">Login</button>
                                         </div>
                                     </div>
+
                                 </fieldset>
                             </form>
                         </div>
@@ -250,13 +260,17 @@
                         <div class="tab-pane fade" id="signup">
                             <form class="form-horizontal">
                                 <fieldset>
+                                    <div>
+                                        <p id="forgotlink"><a href="dataApi/forgot.php" target="_blank">Forgot
+                                                password?</a> OR Register a new </p>
+                                    </div>
                                     <!-- Sign Up Form -->
                                     <!-- Text input-->
                                     <div class="control-group">
                                         <label class="control-label" for="registemail">Email:</label>
                                         <div class="controls">
-                                            <input id="registemail" name="registemail" class="form-control" type="text" placeholder="example@lfz.edu" class="input-large"
-                                                required="">
+                                            <input id="registemail" name="registemail" class="form-control" type="text"
+                                                placeholder="example@lfz.edu" class="input-large" required="">
                                         </div>
                                     </div>
 
@@ -264,7 +278,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="registname">Name:</label>
                                         <div class="controls">
-                                            <input id="registname" name="registname" class="form-control" type="text" placeholder="firstName lastName" class="input-large" required="">
+                                            <input id="registname" name="registname" class="form-control" type="text"
+                                                placeholder="firstName lastName" class="input-large" required="">
                                         </div>
                                     </div>
 
@@ -272,8 +287,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="registpassword">Password:</label>
                                         <div class="controls">
-                                            <input id="registpassword" name="registpassword" class="form-control" type="password" placeholder="********" class="input-large"
-                                                required="">
+                                            <input id="registpassword" name="registpassword" class="form-control" type="password"
+                                                placeholder="********" class="input-large" required="">
                                             <em>1-8 Characters</em>
                                         </div>
                                     </div>
@@ -282,8 +297,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
                                         <div class="controls">
-                                            <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large"
-                                                required="">
+                                            <input id="reenterpassword" class="form-control" name="reenterpassword"
+                                                type="password" placeholder="********" class="input-large" required="">
                                         </div>
                                     </div>
 
@@ -291,7 +306,8 @@
                                     <div class="control-group">
                                         <label class="control-label" for="confirmregist"></label>
                                         <div class="controls">
-                                            <button type="button" id="confirmregist" name="confirmregist" class="btn btn-success">Create a Account
+                                            <button type="button" id="confirmregist" name="confirmregist" class="btn btn-success">Create
+                                                a Account
                                             </button>
                                         </div>
                                     </div>
@@ -311,54 +327,54 @@
     <!-- -- end login modal -->
 
 
-<!-- delete Modal  -->
-<div id="deleteModal" class="modal fade">
-	<div id="del-modalbody" class="modal-dialog modal-confirm">
-		<div  class="modal-content">
-			<div id="del-modalhead" class="modal-header">
-				<div id="del-iconbox" class="icon-box">
-					<i id="delwarningICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-				</div>				
-				<h4 class="modal-title">Are you sure?</h4>	
-                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
-			</div>
-			<div class="modal-body">
-				<p>Do you really want to delete these records? This process cannot be undone.</p>
-			</div>
-			<div id="del-modalfooter" class="modal-footer">
-				<button id="del-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-				<button id="del-modalconfirm" type="button" class="btn btn-danger">Confirm Delete</button>
-			</div>
-		</div>
-	</div>
-</div> 
+    <!-- delete Modal  -->
+    <div id="deleteModal" class="modal fade">
+        <div id="del-modalbody" class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div id="del-modalhead" class="modal-header">
+                    <div id="del-iconbox" class="icon-box">
+                        <i id="delwarningICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="modal-title">Are you sure?</h4>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div id="del-modalfooter" class="modal-footer">
+                    <button id="del-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <button id="del-modalconfirm" type="button" class="btn btn-danger">Confirm Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- ---end delete modal --- -->
+    <!-- ---end delete modal --- -->
 
 
- <!-- --- need login alert modal  -->
- <div id="needLoginModal" class="modal fade">
-	<div id="needLogin-modalbody" class="modal-dialog modal-confirm">
-		<div  class="modal-content">
-			<div id="needLogin-modalhead" class="modal-header">
-				<div id="needLogin-iconbox" class="icon-box">
-					<i id="needLoginwarningICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-				</div>				
-				<h4 class="modal-title">Please Login to get full authority</h4>	
-			</div>
-			<div class="modal-body">
-                <p>Non login user can can not update information & calculate average </p> 
-                <p>ALL data will be lost after refresh  </p>
-			</div>
-			<div id="needLogin-modalfooter" class="modal-footer">
-				<button id="needLogin-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-	
-			</div>
-		</div>
-	</div>
-</div> 
+    <!-- --- need login alert modal  -->
+    <div id="needLoginModal" class="modal fade">
+        <div id="needLogin-modalbody" class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div id="needLogin-modalhead" class="modal-header">
+                    <div id="needLogin-iconbox" class="icon-box">
+                        <i id="needLoginwarningICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </div>
+                    <h4 class="modal-title">Please Login to get full authority</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Non login user can can not update information & calculate average </p>
+                    <p>ALL data will be lost after refresh </p>
+                </div>
+                <div id="needLogin-modalfooter" class="modal-footer">
+                    <button id="needLogin-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 
-<!-- --- end need login alert modal  -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- end need login alert modal  -->
 
     <script type="text/javascript" src="assets/js/lib/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
