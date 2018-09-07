@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 if(mysqli_connect_errno()) {
