@@ -118,7 +118,7 @@ if($stmt = mysqli_prepare($conn, $query)) {
     </footer>
 </div> 
 
-    <script src="/cms/js/jquery.js"></script>
-    <script src="/cms/js/bootstrap.min.js"></script>
+       <script type="text/javascript" src="../assets/js/lib/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
