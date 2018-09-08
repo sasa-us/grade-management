@@ -108,7 +108,7 @@ if(ifItIsMethod('POST')) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>appmonstaTest</title>
+    <title>grade-management-reset</title>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
