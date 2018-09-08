@@ -21,7 +21,7 @@ switch($_POST['action']){
 		include 'dataApi/read.php';
 		break;
 	case 'readMydata':
-		include 'dataApi/readmydata.php';
+		include 'dataApi/readMydata.php';
 		break;
 	case 'insert':
 		include 'dataApi/insert.php';
