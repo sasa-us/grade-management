@@ -290,7 +290,7 @@ function getDB() {
                   dataType: 'json',
                   success: function (response) {
                         if (response.success) {
-                              console.log(response);
+                              console.log('login users data: ', response);
                               for (var i = 0; i < response.data.length; i++) {
                                     renderStudentOnDom(response.data[i]);
                               }
