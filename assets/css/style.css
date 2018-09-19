@@ -7,11 +7,6 @@ body {
     background: inherit;
 }
 
-ul.nav {
-    position: relative;
-    top: 16px;
-}
-
 ul.navbar-right {
     width: 39%;
     right: 38px;
@@ -30,6 +25,9 @@ button#add {
 }
 
 div.student-add-form {
+    z-index: 11;
+}
+form.student-add-form {
     z-index: 11;
 }
 
@@ -126,6 +124,9 @@ tr.strikeout td:after {
 }
 
 /* -------------loginmodal----------------- */
+.modal {
+    background-color: rgba(0, 0, 0, .5);
+}
 input#rememberme-0 {
     margin-left: -12px;
 }
@@ -181,6 +182,40 @@ button#del-modalcancel {
     margin-left: 15px;
 }
 
+/* ---------------  emptyDBmodal --------------------------->*/
+#dbEmpty-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: green;;
+}
+
+#dbEmpty-modalhead h4 {
+    text-align: center;
+    color: green;
+}
+
+.modal-body p{
+    color: #5bc0de;
+    text-align: center;
+}
+
+
+/* --------------------------- media query--------------------------------> */
+
+
+@media only screen and (min-width: 760px) {
+    ul.nav {
+        position: relative;
+        top: 16px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .pull-right {
+        float: none !important;
+    }
+}
 /* ------------ for ipad --------------------> */
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (-webkit-min-device-pixel-ratio: 2) {
     table.table {

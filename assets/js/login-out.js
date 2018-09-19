@@ -1,6 +1,8 @@
 $(document).ready(init);
 
 function init() {
+    $('#logoutSection').hide();
+    // $('#myModal').modal();
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);
@@ -43,11 +45,6 @@ function checkLoginStatus() {
 
 
 function loginUser() {
-    // if (localStorage) {
-    //     var email = $('#email').val();
-    //     localStorage.setItem('email', email);
-    // }    
-    //var email = localStorage.getItem('email');
 
     var email = $('#email').val();
     var password = $('#password').val();
