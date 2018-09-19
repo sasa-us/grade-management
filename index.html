@@ -74,12 +74,12 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-education"></span>
                 </span>
-                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade"
+                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade" min="0" max="100"
                     required>
             </div>
 
             <div>
-                <button type="button" id='add' class="btn btn-success" onclick="">Add</button>
+                <button  id='add' class="btn btn-success" onclick="">Add</button>
                 <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Cancel</button>
                 <div class="getall">
                     <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
@@ -103,7 +103,7 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                 </tbody>
             </table>
         </div>
@@ -375,6 +375,30 @@
     </div>
 
     <!-- --- end need login alert modal  -->
+
+
+    <!-- --- new login DB EMPTY alert modal  -->
+    <div id="dbEmptyModal" class="modal fade">
+        <div id="dbEmpty-modalbody" class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div id="dbEmpty-modalhead" class="modal-header">
+                    <div id="dbEmpty-iconbox" class="icon-box">
+                        <i id="ndbEmptyICON" class="fas fa-hand-peace" aria-hidden="true"></i>
+                    </div>  
+                    <h4 class="modal-title">Login Success!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>You can add new data now.</p>
+                </div>
+                <div id="dbEmpty-modalfooter" class="modal-footer">
+                    <button id="dbEmpty-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- end new login DB EMPTY alert modal  -->
 
     <script type="text/javascript" src="assets/js/lib/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

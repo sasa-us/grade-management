@@ -78,11 +78,8 @@ function addStudent() {
             console.log('array now is ', student_array);
             clearAddStudentFormInputs();
             updateStudentList(inputObj);
-      } else {
-            alert('not valid input');
-
-            clearAddStudentFormInputs();
-      }
+      } 
+   
 }
 
 function clearAddStudentFormInputs() {
@@ -297,7 +294,7 @@ function getDB() {
                               calculateGradeAverage();
                               renderGradeAverage(ave);
                         } else {
-                              alert('db is empty, please add new one');
+                              emptyDBmodal();
                         }
 
                   },
@@ -357,6 +354,9 @@ function needLoginModal() {
       $('#needLoginModal').modal('show');
 }
 
+function emptyDBmodal() {
+      $('#dbEmptyModal').modal('show');
+}
 
 function handleDelete(row, stuID) {
       showDeleteModal();
