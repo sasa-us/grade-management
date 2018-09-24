@@ -3,6 +3,7 @@ $(document).ready(init);
 function init() {
     $('#logoutSection').hide();
     // $('#myModal').modal();
+    $('#firstopenModal').modal();
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);

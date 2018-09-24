@@ -200,6 +200,28 @@ button#del-modalcancel {
     text-align: center;
 }
 
+/* ------------  first open page modal ------------- */
+#firstopen-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    /* color: #6b586c; */
+    color: #1d2e5a;
+}
+
+#firstopen-modalhead h4 {
+    text-align: center;
+    color: #1d2e5a;
+}
+
+.modal-body p{
+    color: #1d2e5a;
+    text-align: center;
+}
+#firstopen-modalcancel {
+    background-color: #1d2e5a;
+    border-color: #1d2e5a;
+}
 
 /* --------------------------- media query--------------------------------> */
 
