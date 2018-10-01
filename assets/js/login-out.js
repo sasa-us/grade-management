@@ -6,7 +6,6 @@ function init() {
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);
     checkLoginStatus();
-    // $('#firstopenModal').modal();
 }
 
 var user_role = null;
@@ -28,15 +27,18 @@ function checkLoginStatus() {
             //{ success: true, loginuser : {id: "1", email: "aa", name: "aa", password: "aa", user_role: "student",}
             //console.log(response.loginuser.name);
             //console.log(response.loginuser.user_role);
-            if (response.success) {
+            if(response.success == false){
+                $('#firstopenModal').modal();
+                $('.student-list').after('<h2 class="emptywarning">Empty Data, Please Login to get fully authority</h2>');
+            }
+            else if(response.success) {
                 showWelcome(response.loginuser);
                 user_role = response.loginuser.user_role;
                 myemail = response.loginuser.email;
                 myid = response.loginuser.id;
+                clearEmptyTableWarning();
                 getDB();
-            } else {
-                $('#firstopenModal').modal();
-            }
+            } 
         }
     })
 }
@@ -69,7 +71,7 @@ function loginUser() {
                 myid = response.user['id'];
                 myname = response.user['name'];
 
-                console.log(response.user);
+                // console.log(response.user);
                 console.log('db email ', myemail);
                 console.log('user role is ', user_role);
                 console.log(myid);
@@ -89,7 +91,6 @@ function loginUser() {
 }
 
 function activeRegister() {
-    alert('need register');
     $('#myTab li:nth-child(1)').removeClass('active');
     $('#myTab li:nth-child(2)').addClass('active');
 
@@ -99,7 +100,10 @@ function activeRegister() {
 }
 
 function activelogin() {
-    alert('login again please');
+    setTimeout(function () {
+        $('#loginAfterRegisterModal').modal();
+    }, 3000);
+
     $('#myTab li:nth-child(2)').removeClass('active');
     $('#myTab li:nth-child(1)').addClass('active');
 
@@ -183,7 +187,8 @@ function registUser() {
             }
         });
     } else {
-        alert('check psw');
+        $('#passwordUnmatchModal').modal();
+
     }
 
 

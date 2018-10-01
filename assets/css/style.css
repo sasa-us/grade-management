@@ -223,6 +223,33 @@ button#del-modalcancel {
     border-color: #1d2e5a;
 }
 
+/* --- password not match modal --- */
+#passwordUnmatch-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: #ff9800;
+}
+
+#passwordUnmatch-modalhead h4 {
+    text-align: center;
+    color: #ff9800;
+}
+
+/* ---loginAfterRegisterModal --- */
+
+#loginAfterRegister-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: #ff9800;
+}
+
+#loginAfterRegister-modalhead h4 {
+    text-align: center;
+    color: #ff9800;
+}
+
 /* --------------------------- media query--------------------------------> */
 
 
@@ -258,10 +285,7 @@ button#del-modalcancel {
 }
 
 @media only screen and (max-width: 925px) {
-    body {
-        background-color: lightblue;
-    }
-
+   
     #del-modalcancel {
         left: 0px;
         bottom: 0x;

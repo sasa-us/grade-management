@@ -32,6 +32,7 @@ function addStudent() {
       var course = $('#course').val();
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
+      grade = grade.toFixed(2);
       var stuID = myid;
 
       if (stuname.trim() == '') {
@@ -75,13 +76,16 @@ function addStudent() {
             };
 
             student_array.push(inputObj);
-            console.log('array now is ', student_array);
+            clearEmptyTableWarning();
             clearAddStudentFormInputs();
             updateStudentList(inputObj);
       } 
    
 }
 
+function clearEmptyTableWarning() {
+      $('.emptywarning').remove();
+}
 function clearAddStudentFormInputs() {
       $('#studentName').val("");
       $('#course').val("");
@@ -114,8 +118,6 @@ function renderStudentOnDom(inputObj) {
                   click: function (event) {
                         event.stopPropagation();
                         var row = student_array.indexOf(inputObj);
-                        console.log('row of this obj is ', row);
-                        console.log('deleted row is ', row);
                         console.log('del student id is ', stuID);
                         $(this).parent().parent().addClass("strikeout");
 
@@ -304,8 +306,7 @@ function getDB() {
                   }
             });
       }
-      // calculateGradeAverage();
-      // renderGradeAverage(ave);
+
 }
 
 //connect script.js to data.php
