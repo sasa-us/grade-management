@@ -419,9 +419,44 @@
             </div>
         </div>
     </div>
-
     <!-- ---- end first open page modal --- -->
 
+     <!-- --- password not match modal ----  -->
+     <div id="passwordUnmatchModal" class="modal fade">
+        <div id="passwordUnmatch-modalbody" class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div id="passwordUnmatch-modalhead" class="modal-header">
+                    <div id="passwordUnmatch-iconbox" class="icon-box">
+                        <i id="passwordUnmatchICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </div>  
+                    <h4 class="modal-title">Oops... Password Not Match!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please check password again</p>
+                </div>
+                <div id="passwordUnmatch-modalfooter" class="modal-footer">
+                    <button id="passwordUnmatch-modalcancel" type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- --- end password not match modal ----  -->
+
+     <!-- ---- need loginAgain modal after register ---- -->
+     <div id="loginAfterRegisterModal" class="modal fade">
+        <div id="loginAfterRegister-modalbody" class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div id="loginAfterRegister-modalhead" class="modal-header">
+                    <div id="loginAfterRegister-iconbox" class="icon-box">
+                        <i id="loginAfterRegisterICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </div>  
+                    <h4 class="modal-title">Please Login</h4>
+                </div>        
+            </div>
+        </div>
+    </div>
+      <!-- ---- end need loginAgain modal after register ---- -->
     <script type="text/javascript" src="assets/js/lib/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
