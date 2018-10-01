@@ -361,10 +361,10 @@ function emptyDBmodal() {
 function handleDelete(row, stuID) {
       showDeleteModal();
       $('#del-modalconfirm').on('click', function () {
-            $('#deleteModal').modal('toggle');
+            $('#deleteModal').modal('hide');
             //$('.modal-backdrop.in').remove();
-            $('body').removeClass('modal-backdrop in');
-            $('.modal-backdrop').remove();
+            // $('body').removeClass('modal-backdrop in');
+            // $('.modal-backdrop').remove();
 
             console.log($(this));
             removeStudent(row, stuID);
