@@ -1,13 +1,12 @@
 $(document).ready(init);
 
 function init() {
-    $('#logoutSection').hide();
-    // $('#myModal').modal();
-    $('#firstopenModal').modal();
+    $('#logoutSection').hide();    
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
     $('#confirmregist').on('click', registUser);
     checkLoginStatus();
+    // $('#firstopenModal').modal();
 }
 
 var user_role = null;
@@ -35,9 +34,8 @@ function checkLoginStatus() {
                 myemail = response.loginuser.email;
                 myid = response.loginuser.id;
                 getDB();
-                // ave = calculateGradeAverage();
-                console.log('login check ave is ', ave);
-                // renderGradeAverage(ave);
+            } else {
+                $('#firstopenModal').modal();
             }
         }
     })
