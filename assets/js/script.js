@@ -32,7 +32,7 @@ function addStudent() {
       var course = $('#course').val();
       var gradeStr = $('#studentGrade').val();
       var grade = parseFloat(gradeStr);
-      grade = grade.toFixed(2);
+      grade = grade.toFixed(0);
       var stuID = myid;
 
       if (stuname.trim() == '') {

@@ -143,6 +143,7 @@ function logoutUser() {
 
                 showWelcome(response.user);
                 $("tbody").empty();
+                $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user can only <strong>\'ADD\'</strong> and <strong>\'DELETE\'</strong> </h5></div>');
                 // window.localStorage.clear();
             }
         },
