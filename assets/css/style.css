@@ -17,6 +17,9 @@ ul.navbar-right li {
     left: 46px;
     margin: 0 8px;
 }
+div#why.tab-pane.fade.in {
+    padding-top: 10px;
+}
 
 button#getServerData,
 button#add {
@@ -97,7 +100,6 @@ table.table {
     width: 80px;
 }
 
-.td-Delbutton:hover {}
 
 input#updateGrade,
 input#updateCourse,
