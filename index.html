@@ -28,12 +28,17 @@
                 </button>
                 <a href="#" class="navbar-brand">Student Grade Table</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-nav-demo">
+
+
+            <div>
                 <ul class="nav navbar-nav">
-                    <li>
-                        <div>Grade Average : <span class="avgGrade">0</span></div>
+                    <li class="gradeAveLi">
+                        <div id="gradeAve">Grade Average : <span class="avgGrade">0</span></div>
                     </li>
                 </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-nav-demo">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="welcomeDisplay">
                         <p>Welcome
@@ -48,6 +53,10 @@
                     </li>
                 </ul>
             </div>
+
+
+
+
         </div>
         <!-- nav bar end-=====->
 
@@ -74,12 +83,12 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-education"></span>
                 </span>
-                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade" min="0" max="100"
-                    required>
+                <input type="number" class="form-control" name="studentGrade" id="studentGrade" placeholder="Student Grade"
+                    min="0" max="100" required>
             </div>
 
             <div>
-                <button  id='add' class="btn btn-success" onclick="">Add</button>
+                <button id='add' class="btn btn-success" onclick="">Add</button>
                 <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Cancel</button>
                 <div class="getall">
                     <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
@@ -103,7 +112,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -384,7 +393,7 @@
                 <div id="dbEmpty-modalhead" class="modal-header">
                     <div id="dbEmpty-iconbox" class="icon-box">
                         <i id="ndbEmptyICON" class="fas fa-hand-peace" aria-hidden="true"></i>
-                    </div>  
+                    </div>
                     <h4 class="modal-title">Login Success!</h4>
                 </div>
                 <div class="modal-body">
@@ -406,7 +415,7 @@
                 <div id="firstopen-modalhead" class="modal-header">
                     <div id="firstopen-iconbox" class="icon-box">
                         <i id="firstopenICON" class="fas fa-graduation-cap" aria-hidden="true"></i>
-                    </div>  
+                    </div>
                     <h4 class="modal-title">Welcome to Grade Management System!</h4>
                 </div>
                 <div class="modal-body">
@@ -421,14 +430,14 @@
     </div>
     <!-- ---- end first open page modal --- -->
 
-     <!-- --- password not match modal ----  -->
-     <div id="passwordUnmatchModal" class="modal fade">
+    <!-- --- password not match modal ----  -->
+    <div id="passwordUnmatchModal" class="modal fade">
         <div id="passwordUnmatch-modalbody" class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div id="passwordUnmatch-modalhead" class="modal-header">
                     <div id="passwordUnmatch-iconbox" class="icon-box">
                         <i id="passwordUnmatchICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    </div>  
+                    </div>
                     <h4 class="modal-title">Oops... Password Not Match!</h4>
                 </div>
                 <div class="modal-body">
@@ -441,22 +450,22 @@
             </div>
         </div>
     </div>
-     <!-- --- end password not match modal ----  -->
+    <!-- --- end password not match modal ----  -->
 
-     <!-- ---- need loginAgain modal after register ---- -->
-     <div id="loginAfterRegisterModal" class="modal fade">
+    <!-- ---- need loginAgain modal after register ---- -->
+    <div id="loginAfterRegisterModal" class="modal fade">
         <div id="loginAfterRegister-modalbody" class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div id="loginAfterRegister-modalhead" class="modal-header">
                     <div id="loginAfterRegister-iconbox" class="icon-box">
                         <i id="loginAfterRegisterICON" class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                    </div>  
+                    </div>
                     <h4 class="modal-title">Please Login</h4>
-                </div>        
+                </div>
             </div>
         </div>
     </div>
-      <!-- ---- end need loginAgain modal after register ---- -->
+    <!-- ---- end need loginAgain modal after register ---- -->
     <script type="text/javascript" src="assets/js/lib/jquery-2.1.4.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

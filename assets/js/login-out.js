@@ -29,7 +29,7 @@ function checkLoginStatus() {
             //console.log(response.loginuser.user_role);
             if(response.success == false){
                 $('#firstopenModal').modal();
-                $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user can only <strong>\'ADD\'</strong> and <strong>\'DELETE\'</strong> </h5></div>');
+                $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user <strong>CANNOT \'UPDATE\'</strong> , <strong>\'Calculate Average\'</strong>, and will <strong>LOST data</strong> after Click \'Refresh\'! </h5></div>');
             }
             else if(response.success) {
                 showWelcome(response.loginuser);

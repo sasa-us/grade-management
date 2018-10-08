@@ -10,12 +10,17 @@ body {
 ul.navbar-right {
     width: 39%;
     right: 38px;
+    margin-left: 0px;
 }
 
 ul.navbar-right li {
     position: relative;
     left: 46px;
     margin: 0 8px;
+}
+
+div#gradeAve {
+    text-align: center;
 }
 div#why.tab-pane.fade.in {
     padding-top: 10px;
