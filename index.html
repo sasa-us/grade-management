@@ -228,7 +228,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="email">Email:</label>
                                         <div class="controls">
-                                            <input required="" id="email" name="email" type="text" class="form-control"
+                                            <input required="" id="email" name="email" type="email" class="form-control"
                                                 placeholder="example@lfz.edu" class="input-medium" required="">
                                         </div>
                                     </div>
@@ -267,7 +267,7 @@
 
                         <!----------------------------------------- signup -------------------------------------------->
                         <div class="tab-pane fade" id="signup">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" onsubmit="return stopSubmit();">
                                 <fieldset>
                                     <div>
                                         <p id="forgotlink"><a href="dataApi/forgot.php" target="_blank">Forgot
@@ -278,7 +278,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="registemail">Email:</label>
                                         <div class="controls">
-                                            <input id="registemail" name="registemail" class="form-control" type="text"
+                                            <input id="registemail" name="registemail" class="form-control" type="email"
                                                 placeholder="example@lfz.edu" class="input-large" required="">
                                         </div>
                                     </div>
@@ -297,8 +297,8 @@
                                         <label class="control-label" for="registpassword">Password:</label>
                                         <div class="controls">
                                             <input id="registpassword" name="registpassword" class="form-control" type="password"
-                                                placeholder="********" class="input-large" required="">
-                                            <em>1-8 Characters</em>
+                                                placeholder="********" class="input-large" required=""  pattern=".{4,10}">
+                                            <em>4-10 Characters</em>
                                         </div>
                                     </div>
 
@@ -307,7 +307,7 @@
                                         <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
                                         <div class="controls">
                                             <input id="reenterpassword" class="form-control" name="reenterpassword"
-                                                type="password" placeholder="********" class="input-large" required="">
+                                                type="password" placeholder="********" class="input-large" required="" pattern=".{4,10}">
                                         </div>
                                     </div>
 
@@ -315,7 +315,7 @@
                                     <div class="control-group">
                                         <label class="control-label" for="confirmregist"></label>
                                         <div class="controls">
-                                            <button type="button" id="confirmregist" name="confirmregist" class="btn btn-success">Create
+                                            <button type="submit" id="confirmregist" name="confirmregist" class="btn btn-success">Create
                                                 a Account
                                             </button>
                                         </div>
