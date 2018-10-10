@@ -1,10 +1,21 @@
 $(document).ready(init);
 
+function stopSubmit() {
+    registUser();
+    return false;
+}
+
 function init() {
     $('#logoutSection').hide();    
     $("#loginFormButton").on('click', loginUser);
     $("#logoutButton").on('click', logoutUser);
-    $('#confirmregist').on('click', registUser);
+    // $('#confirmregist').on('click', registUser);
+    // $('#confirmregist').on("click", function(e) {
+    //     debugger;
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     registUser();
+    // });
     checkLoginStatus();
 }
 
@@ -143,6 +154,7 @@ function logoutUser() {
 
                 showWelcome(response.user);
                 $("tbody").empty();
+                $('.avgGrade').text('');
                 $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user can only <strong>\'ADD\'</strong> and <strong>\'DELETE\'</strong> </h5></div>');
                 // window.localStorage.clear();
             }
@@ -154,15 +166,23 @@ function logoutUser() {
     });
 } //end logoutUser()
 
-function registUser() {
-
+function registUser(event) {
+    
     var registemail = $('#registemail').val();
     var registname = $('#registname').val();
     var registpassword = $('#registpassword').val();
     var reenterpassword = $('#reenterpassword').val();
+    
+    // var pattern = ".{4,10}"
+    // var patternRegex = new RegExp(pattern)
+    // if(!patternRegex.test(registpassword)) {
+    //      alert('password less than 4');
+    //      return;
+    // }
 
     // checkAvailableEmail();
     if (registpassword === reenterpassword) {
+        // event.preventDefault();
         var registData = {
             email: registemail,
             name: registname,
@@ -193,6 +213,5 @@ function registUser() {
 
     }
 
+}//end registUser()
 
-
-}
