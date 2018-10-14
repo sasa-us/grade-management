@@ -19,6 +19,10 @@ ul.navbar-right li {
     margin: 0 8px;
 }
 
+li.gradeAveLi {
+    position: relative;
+    bottom: 4px;
+}
 div#gradeAve {
     text-align: center;
 }
@@ -30,8 +34,13 @@ button#getServerData,
 button#add {
     background-color: #337ab7;
     border-color: #2e6da4;
+    
 }
 
+button#getServerData {
+    height: 30px;
+    width: 35px;
+}
 div.student-add-form {
     z-index: 11;
 }
@@ -84,7 +93,7 @@ tbody tr:nth-child(odd):hover {
 }
 
 div.getall {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     margin-left: 10px;
     display: inline-block;
 }
