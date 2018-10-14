@@ -4,7 +4,7 @@ var student_array = [];
 var input = $("input[type=text]");
 var selectedStudentID = null;
 var confirmDelete = false;
-var ave = 0;
+var ave = null;
 
 function initializeApp() {
       addClickHandlersToElements();
@@ -79,10 +79,19 @@ function addStudent() {
             clearEmptyTableWarning();
             clearAddStudentFormInputs();
             updateStudentList(inputObj);
+            hiddenAverageResult();
       } 
    
 }
 
+function hiddenAverageResult(){
+      $('.avgGrade').text('');
+      // <i class="fa fa-spinner fa-spin" style="font-size:14px"></i>
+      var i = $('<i>', {
+            class: 'fa fa-spinner fa-spin'
+      });
+      $('.avgGrade').append(i);
+}
 function clearEmptyTableWarning() {
       $('.emptywarning').remove();
 }
@@ -203,6 +212,9 @@ function calculateGradeAverage() {
                   console.log(response); //{success: true, errors: Array(0), average: {…}}
                   if (response.success) {
                         ave = response.average.average;
+                        ave = parseFloat(ave).toFixed(1);
+                        console.log('calculate function average is ', ave);
+                        renderGradeAverage(ave);
 
                   } else {
                         console.log('no data response');
@@ -212,14 +224,16 @@ function calculateGradeAverage() {
                   console.log('server not response.');
             }
       });
-      ave = parseFloat(ave).toFixed(2);
-      console.log('calculate function average is ', ave);
-      return ave;
+
 }
 
 function renderGradeAverage(ave) {
-
-      $('.avgGrade').text(ave);
+      if(ave == null) {
+            hiddenAverageResult();
+      } else {
+          $('.avgGrade').text(ave);  
+      }
+      
 }
 
 function removeStudent(index, studentID) {
@@ -236,7 +250,8 @@ function removeStudent(index, studentID) {
             },
             method: 'POST',
             success: function (response) {
-                  console.log('response is ', response);
+                  console.log('removeStudent response is ', response);
+                  hiddenAverageResult();
             }
 
       });
@@ -316,6 +331,8 @@ function getDB() {
 //change function renderStudentOnDom(inputObj) {
 //inputObj.id/ inputObj.name  inputObj.xxxx xxxx should match mysql DB column key  
 function updateDBStudentInfor() {
+      // hiddenAverageResult();
+     
       if (myid == null) {
             needLoginModal();
             return;
@@ -343,15 +360,13 @@ function updateDBStudentInfor() {
             success: function (response) {
                   console.log('update response is ', response);
                   getDB();
+                  hiddenAverageResult();
                  
             }
       });
-
-      // location.reload();
 }
 
 function needLoginModal() {
-
       $('#needLoginModal').modal('show');
 }
 
@@ -363,10 +378,7 @@ function handleDelete(row, stuID) {
       showDeleteModal();
       $('#del-modalconfirm').on('click', function () {
             $('#deleteModal').modal('hide');
-            //$('.modal-backdrop.in').remove();
-            // $('body').removeClass('modal-backdrop in');
-            // $('.modal-backdrop').remove();
-
+       
             console.log($(this));
             removeStudent(row, stuID);
 

@@ -33,7 +33,11 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li class="gradeAveLi">
-                        <div id="gradeAve">Grade Average : <span class="avgGrade">0</span></div>
+                        <div id="gradeAve">Grade Average : <span class="avgGrade"><i class="fa fa-spinner fa-spin" style="font-size:14px"></i></span>
+                            <div class="getall">
+                                <button type="button" id='getServerData' class="btn btn-info mt-20" onclick=""><i class="fas fa-calculator"></i></button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -90,10 +94,9 @@
             <div>
                 <button id='add' class="btn btn-success" onclick="">Add</button>
                 <button type="button" id='cancel' class="btn btn-warning active:focus," onclick="">Cancel</button>
-                <div class="getall">
-                    <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="">Refresh</button>
-                    <!-- <button type="button" id='getServerData' class="btn btn-info mt-20" onclick="getDB()">Get all student grade from Server</button> -->
-                </div>
+                <!-- <div class="getall">
+                    <button type="button" id='getServerData' class="btn btn-info mt-20" onclick=""><i class="fa fa-refresh fa-spin" ></i>Average</i></button>
+                </div> -->
             </div>
 
         </form>
