@@ -1,6 +1,12 @@
+.DS_Store
+.idea
+README.md
 mysql_connect.php
 sql
-cronjob
 email_config.php
 /vendor/
 index.html.1007backup
+
+mysql_connect_backup.php
+allbackup.sql
+backup.php.un
