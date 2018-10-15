@@ -10,18 +10,19 @@ function initializeApp() {
       addClickHandlersToElements();
 }
 
+function stopSubmitAdd() {
+      addStudent();
+      return false;
+}
 function addClickHandlersToElements() {
       // $('#add').on("click", handleAddClicked);
-      $('#add').on("click",function(e) {
-            handleAddClicked(e);
-      });
       $('#cancel').on('click', handleCancelClick);
       $('#getServerData').on('click', getDB);
       $('#saveChange').on('click', updateDBStudentInfor);
 }
 
-function handleAddClicked(e) {
-      addStudent(e);
+function handleAddClicked() {
+      addStudent();
 }
 
 function handleCancelClick() {
@@ -30,9 +31,8 @@ function handleCancelClick() {
       clearAddStudentFormInputs();
 }
 
-function addStudent(e) {
-      e.stopPropagation();
-      e.preventDefault();
+function addStudent() {
+
       var stuname = $('#studentName').val();
       var course = $('#course').val();
       var gradeStr = $('#studentGrade').val();
