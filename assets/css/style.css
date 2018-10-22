@@ -266,6 +266,25 @@ button#del-modalcancel {
     color: #ff9800;
 }
 
+/* --- logout-Confirm modal --- */
+
+#logout-confirm-iconbox {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 3em;
+    color: indianred;
+}
+
+#logout-confirm-modalhead h4 {
+    text-align: center;
+    color: indianred;
+}
+
+button#logout-confirm-modalcancel {
+    left: 0px;
+    bottom: 0x;
+}
+
 /* --------------------------- media query--------------------------------> */
 
 

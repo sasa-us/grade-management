@@ -8,7 +8,8 @@ function stopSubmit() {
 function init() {
     $('#logoutSection').hide();    
     $("#loginFormButton").on('click', loginUser);
-    $("#logoutButton").on('click', logoutUser);
+    // $("#logoutButton").on('click', logoutUser);
+    $("#logoutButton").on('click', handleLogout);
     // $('#confirmregist').on('click', registUser);
     // $('#confirmregist').on("click", function(e) {
     //     debugger;
@@ -40,7 +41,7 @@ function checkLoginStatus() {
             //console.log(response.loginuser.user_role);
             if(response.success == false){
                 $('#firstopenModal').modal();
-                $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user <strong>CANNOT \'UPDATE\'</strong> , <strong>\'Calculate Average\'</strong>, and will <strong>LOST data</strong> after Click \'Refresh\'! </h5></div>');
+                $('.student-list').after('<div class="emptywarning"> <h3>Empty Data.</h3> <h5> Please Login to get fully authority. Non login user <strong>CANNOT \'UPDATE\'</strong> , <strong>\'Calculate Average\'</strong>, and will <strong>LOST data</strong> after click \'calculator\'! </h5></div>');
             }
             else if(response.success) {
                 showWelcome(response.loginuser);
@@ -151,7 +152,7 @@ function logoutUser() {
         success: function (response) {
             console.log('Logout response is ', response);
             if (response.success) {
-
+                window.location.reload(true);
                 showWelcome(response.user);
                 $("tbody").empty();
                 $('.avgGrade').text('');
@@ -165,6 +166,19 @@ function logoutUser() {
 
     });
 } //end logoutUser()
+
+function handleLogout() {
+    
+    showLogoutConfirmModal();
+        $('#logout-confirm-modalconfirm').on('click', function () {
+              $('#deleteModal').modal('hide');
+              logoutUser();
+        });
+}
+
+function showLogoutConfirmModal() {
+    $('#logout-confirmModal').modal('show');
+}
 
 function registUser(event) {
     
